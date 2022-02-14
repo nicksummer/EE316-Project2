@@ -1,0 +1,850 @@
+ -- Copyright (C) 1991-2013 Altera Corporation
+ -- Your use of Altera Corporation's design tools, logic functions 
+ -- and other software and tools, and its AMPP partner logic 
+ -- functions, and any output files from any of the foregoing 
+ -- (including device programming or simulation files), and any 
+ -- associated documentation or information are expressly subject 
+ -- to the terms and conditions of the Altera Program License 
+ -- Subscription Agreement, Altera MegaCore Function License 
+ -- Agreement, or other applicable license agreement, including, 
+ -- without limitation, that your use is for the sole purpose of 
+ -- programming logic devices manufactured by Altera and sold by 
+ -- Altera or its authorized distributors.  Please refer to the 
+ -- applicable agreement for further details.
+ -- 
+ -- This is a Quartus II output file. It is for reporting purposes only, and is
+ -- not intended for use as a Quartus II input file. This file cannot be used
+ -- to make Quartus II pin assignments - for instructions on how to make pin
+ -- assignments, please see Quartus II help.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- NC            : No Connect. This pin has no internal connection to the device.
+ -- DNU           : Do Not Use. This pin MUST NOT be connected.
+ -- VCCINT        : Dedicated power pin, which MUST be connected to VCC  (1.2V).
+ -- VCCIO         : Dedicated power pin, which MUST be connected to VCC
+ --                 of its bank.
+ --					Bank 1:		3.3V
+ --					Bank 2:		3.3V
+ --					Bank 3:		3.3V
+ --					Bank 4:		3.3V
+ --					Bank 5:		2.5V
+ --					Bank 6:		2.5V
+ --					Bank 7:		2.5V
+ --					Bank 8:		2.5V
+ -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
+ --					It can also be used to report unused dedicated pins. The connection
+ --					on the board for unused dedicated pins depends on whether this will
+ --					be used in a future design. One example is device migration. When
+ --					using device migration, refer to the device pin-tables. If it is a
+ --					GND pin in the pin table or if it will not be used in a future design
+ --					for another purpose the it MUST be connected to GND. If it is an unused
+ --					dedicated pin, then it can be connected to a valid signal on the board
+ --					(low, high, or toggling) if that signal is required for a different
+ --					revision of the design.
+ -- GND+          : Unused input pin. It can also be used to report unused dual-purpose pins.
+ --					This pin should be connected to GND. It may also be connected  to a
+ --					valid signal  on the board  (low, high, or toggling)  if that signal
+ --					is required for a different revision of the design.
+ -- GND*          : Unused  I/O  pin. Connect each pin marked GND* directly to GND
+ --           	    or leave it unconnected.
+ -- RESERVED      : Unused I/O pin, which MUST be left unconnected.
+ -- RESERVED_INPUT    : Pin is tri-stated and should be connected to the board.
+ -- RESERVED_INPUT_WITH_WEAK_PULLUP    : Pin is tri-stated with internal weak pull-up resistor.
+ -- RESERVED_INPUT_WITH_BUS_HOLD       : Pin is tri-stated with bus-hold circuitry.
+ -- RESERVED_OUTPUT_DRIVEN_HIGH        : Pin is output driven high.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- Pin directions (input, output or bidir) are based on device operating in user mode.
+ ---------------------------------------------------------------------------------
+
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+CHIP  "top_level"  ASSIGNED TO AN: EP4CE115F29C7
+
+Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
+-------------------------------------------------------------------------------------------------------------
+VCCIO8                       : A2        : power  :                   : 2.5V    : 8         :                
+oSRAM_iData_sig[3]           : A3        : output : 2.5 V             :         : 8         : N              
+oFC_q_sig[1]                 : A4        : output : 2.5 V             :         : 8         : N              
+VCCIO8                       : A5        : power  :                   : 2.5V    : 8         :                
+oFC_up_sig                   : A6        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[9]           : A7        : output : 2.5 V             :         : 8         : N              
+oIC_q_sig[1]                 : A8        : output : 2.5 V             :         : 8         : N              
+VCCIO8                       : A9        : power  :                   : 2.5V    : 8         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : A10       :        :                   :         : 8         :                
+oFC_q_sig[4]                 : A11       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_buffer_sig[7]    : A12       : output : 2.5 V             :         : 8         : N              
+VCCIO8                       : A13       : power  :                   : 2.5V    : 8         :                
+GND+                         : A14       :        :                   :         : 8         :                
+GND+                         : A15       :        :                   :         : 7         :                
+VCCIO7                       : A16       : power  :                   : 2.5V    : 7         :                
+ostate_ul_sig.PWM_GENERATION : A17       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[2]      : A18       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[0]         : A19       : output : 2.5 V             :         : 7         : N              
+VCCIO7                       : A20       : power  :                   : 2.5V    : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : A21       :        :                   :         : 7         :                
+oKP_value_sig[0]             : A22       : output : 2.5 V             :         : 7         : N              
+oSRAM_oData_sig[7]           : A23       : output : 2.5 V             :         : 7         : N              
+VCCIO7                       : A24       : power  :                   : 2.5V    : 7         :                
+oROM_address_sig[2]          : A25       : output : 2.5 V             :         : 7         : N              
+oIC_q_old_sig[6]             : A26       : output : 2.5 V             :         : 7         : N              
+VCCIO7                       : A27       : power  :                   : 2.5V    : 7         :                
+VCCIO2                       : AA1       : power  :                   : 3.3V    : 2         :                
+GND                          : AA2       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA3       :        :                   :         : 2         :                
+SRAM_ADDR[14]                : AA4       : output : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA5       :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA6       :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA7       :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA8       :        :                   :         : 3         :                
+GNDA1                        : AA9       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA10      :        :                   :         : 3         :                
+VCCIO3                       : AA11      : power  :                   : 3.3V    : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA12      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA13      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA14      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA15      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA16      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA17      :        :                   :         : 4         :                
+VCCIO4                       : AA18      : power  :                   : 3.3V    : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA19      :        :                   :         : 4         :                
+GNDA4                        : AA20      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA21      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA22      :        :                   :         : 5         :                
+oSRAM_iData_buffer_sig[5]    : AA23      : output : 2.5 V             :         : 5         : N              
+otriggered_sig[0]            : AA24      : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA25      :        :                   :         : 5         :                
+oFC_clk_en_count_sig[21]     : AA26      : output : 2.5 V             :         : 5         : N              
+GND                          : AA27      : gnd    :                   :         :           :                
+VCCIO5                       : AA28      : power  :                   : 2.5V    : 5         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB1       :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB2       :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB3       :        :                   :         : 2         :                
+SRAM_ADDR[12]                : AB4       : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_ADDR[6]                 : AB5       : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_ADDR[4]                 : AB6       : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_ADDR[0]                 : AB7       : output : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_ADDR[18]                : AB8       : output : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_ADDR[17]                : AB9       : output : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB10      :        :                   :         : 3         :                
+SRAM_ADDR[15]                : AB11      : output : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB12      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB13      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB14      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB15      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB16      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB17      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB18      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB19      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB20      :        :                   :         : 4         :                
+GPIO[2]                      : AB21      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[0]                      : AB22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+oFC_clk_en_count_sig[4]      : AB23      : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB24      :        :                   :         : 5         :                
+oFC_clk_en_count_sig[18]     : AB25      : output : 2.5 V             :         : 5         : N              
+oSRAM_oData_sig[0]           : AB26      : output : 2.5 V             :         : 5         : N              
+oFC_q_sig[5]                 : AB27      : output : 2.5 V             :         : 5         : N              
+SW[0]                        : AB28      : input  : 2.5 V             :         : 5         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC1       :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC2       :        :                   :         : 2         :                
+SRAM_ADDR[13]                : AC3       : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_UB_N                    : AC4       : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_ADDR[7]                 : AC5       : output : 3.3-V LVTTL       :         : 2         : Y              
+GND                          : AC6       : gnd    :                   :         :           :                
+SRAM_ADDR[3]                 : AC7       : output : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC8       :        :                   :         : 3         :                
+GND                          : AC9       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC10      :        :                   :         : 3         :                
+SRAM_ADDR[16]                : AC11      : output : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC12      :        :                   :         : 3         :                
+GND                          : AC13      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC14      :        :                   :         : 3         :                
+GPIO[1]                      : AC15      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GND                          : AC16      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC17      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC18      :        :                   :         : 4         :                
+GPIO[10]                     : AC19      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GND                          : AC20      : gnd    :                   :         :           :                
+GPIO[4]                      : AC21      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[17]                     : AC22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GND                          : AC23      : gnd    :                   :         :           :                
+oSRAM_address_sig[11]        : AC24      : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC25      :        :                   :         : 5         :                
+oSRAM_oData_sig[13]          : AC26      : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC27      :        :                   :         : 5         :                
+SW[1]                        : AC28      : input  : 2.5 V             :         : 5         : Y              
+SRAM_DQ[8]                   : AD1       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_DQ[9]                   : AD2       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_ADDR[11]                : AD3       : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_LB_N                    : AD4       : output : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_OE_N                    : AD5       : output : 3.3-V LVTTL       :         : 3         : Y              
+VCCIO3                       : AD6       : power  :                   : 3.3V    : 3         :                
+SRAM_ADDR[1]                 : AD7       : output : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD8       :        :                   :         : 3         :                
+VCCIO3                       : AD9       : power  :                   : 3.3V    : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD10      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD11      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD12      :        :                   :         : 3         :                
+VCCIO3                       : AD13      : power  :                   : 3.3V    : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD14      :        :                   :         : 3         :                
+GPIO[8]                      : AD15      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+VCCIO4                       : AD16      : power  :                   : 3.3V    : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD17      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD18      :        :                   :         : 4         :                
+GPIO[12]                     : AD19      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+VCCIO4                       : AD20      : power  :                   : 3.3V    : 4         :                
+GPIO[6]                      : AD21      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[21]                     : AD22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+VCCIO4                       : AD23      : power  :                   : 3.3V    : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD24      :        :                   :         : 4         :                
+GPIO[23]                     : AD25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+oFC_clk_en_count_sig[1]      : AD26      : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[6]      : AD27      : output : 2.5 V             :         : 5         : N              
+oFC_q_old_sig[1]             : AD28      : output : 2.5 V             :         : 5         : N              
+SRAM_DQ[11]                  : AE1       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_DQ[10]                  : AE2       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_DQ[12]                  : AE3       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_DQ[13]                  : AE4       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE5       :        :                   :         : 3         :                
+SRAM_ADDR[5]                 : AE6       : output : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_ADDR[2]                 : AE7       : output : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_WE_N                    : AE8       : output : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE9       :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE10      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE11      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE12      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE13      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE14      :        :                   :         : 3         :                
+GPIO[9]                      : AE15      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[7]                      : AE16      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE17      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE18      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE19      :        :                   :         : 4         :                
+GPIO[30]                     : AE20      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[15]                     : AE21      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[18]                     : AE22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE23      :        :                   :         : 4         :                
+GPIO[27]                     : AE24      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[25]                     : AE25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE26      :        :                   :         : 5         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE27      :        :                   :         : 5         :                
+oIC_clk_en_count_sig[0]      : AE28      : output : 2.5 V             :         : 5         : N              
+GND                          : AF1       : gnd    :                   :         :           :                
+SRAM_ADDR[10]                : AF2       : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_DQ[14]                  : AF3       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_DQ[1]                   : AF4       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_ADDR[8]                 : AF5       : output : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_DQ[4]                   : AF6       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_DQ[7]                   : AF7       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_CE_N                    : AF8       : output : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF9       :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF10      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF11      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF12      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF13      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF14      :        :                   :         : 3         :                
+GPIO[13]                     : AF15      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[11]                     : AF16      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF17      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF18      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF19      :        :                   :         : 4         :                
+GPIO[32]                     : AF20      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[19]                     : AF21      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[20]                     : AF22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF23      :        :                   :         : 4         :                
+GPIO[14]                     : AF24      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[16]                     : AF25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[29]                     : AF26      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+oROM_q_sig[1]                : AF27      : output : 2.5 V             :         : 5         : N              
+GND                          : AF28      : gnd    :                   :         :           :                
+VCCIO2                       : AG1       : power  :                   : 3.3V    : 2         :                
+GND                          : AG2       : gnd    :                   :         :           :                
+SRAM_DQ[15]                  : AG3       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_DQ[2]                   : AG4       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+GND                          : AG5       : gnd    :                   :         :           :                
+SRAM_DQ[5]                   : AG6       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG7       :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG8       :        :                   :         : 3         :                
+GND                          : AG9       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG10      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG11      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG12      :        :                   :         : 3         :                
+GND                          : AG13      : gnd    :                   :         :           :                
+GND+                         : AG14      :        :                   :         : 3         :                
+GND+                         : AG15      :        :                   :         : 4         :                
+GND                          : AG16      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG17      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG18      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG19      :        :                   :         : 4         :                
+GND                          : AG20      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG21      :        :                   :         : 4         :                
+GPIO[26]                     : AG22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[31]                     : AG23      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GND                          : AG24      : gnd    :                   :         :           :                
+GPIO[22]                     : AG25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[35]                     : AG26      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GND                          : AG27      : gnd    :                   :         :           :                
+VCCIO5                       : AG28      : power  :                   : 2.5V    : 5         :                
+VCCIO3                       : AH2       : power  :                   : 3.3V    : 3         :                
+SRAM_DQ[0]                   : AH3       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+SRAM_DQ[3]                   : AH4       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+VCCIO3                       : AH5       : power  :                   : 3.3V    : 3         :                
+SRAM_DQ[6]                   : AH6       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH7       :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH8       :        :                   :         : 3         :                
+VCCIO3                       : AH9       : power  :                   : 3.3V    : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH10      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH11      :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH12      :        :                   :         : 3         :                
+VCCIO3                       : AH13      : power  :                   : 3.3V    : 3         :                
+GND+                         : AH14      :        :                   :         : 3         :                
+GND+                         : AH15      :        :                   :         : 4         :                
+VCCIO4                       : AH16      : power  :                   : 3.3V    : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH17      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH18      :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH19      :        :                   :         : 4         :                
+VCCIO4                       : AH20      : power  :                   : 3.3V    : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH21      :        :                   :         : 4         :                
+GPIO[28]                     : AH22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[34]                     : AH23      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+VCCIO4                       : AH24      : power  :                   : 3.3V    : 4         :                
+GPIO[24]                     : AH25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[33]                     : AH26      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+VCCIO4                       : AH27      : power  :                   : 3.3V    : 4         :                
+VCCIO1                       : B1        : power  :                   : 3.3V    : 1         :                
+GND                          : B2        : gnd    :                   :         :           :                
+oSRAM_iData_sig[13]          : B3        : output : 2.5 V             :         : 8         : N              
+oFC_q_old_sig[3]             : B4        : output : 2.5 V             :         : 8         : N              
+GND                          : B5        : gnd    :                   :         :           :                
+oSRAM_address_sig[16]        : B6        : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[9]         : B7        : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[1]             : B8        : output : 2.5 V             :         : 8         : N              
+GND                          : B9        : gnd    :                   :         :           :                
+ostate_ul_program_sig.ONE000 : B10       : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[5]                : B11       : output : 2.5 V             :         : 8         : N              
+GND                          : B12       : gnd    :                   :         :           :                
+GND                          : B13       : gnd    :                   :         :           :                
+GND+                         : B14       :        :                   :         : 8         :                
+GND+                         : B15       :        :                   :         : 7         :                
+GND                          : B16       : gnd    :                   :         :           :                
+oIC_q_old_sig[5]             : B17       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_sig[14]          : B18       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : B19       :        :                   :         : 7         :                
+GND                          : B20       : gnd    :                   :         :           :                
+oFC_q_sig[2]                 : B21       : output : 2.5 V             :         : 7         : N              
+otriggered_sig[1]            : B22       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[3]      : B23       : output : 2.5 V             :         : 7         : N              
+GND                          : B24       : gnd    :                   :         :           :                
+oIC_q_sig[6]                 : B25       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[8]         : B26       : output : 2.5 V             :         : 7         : N              
+GND                          : B27       : gnd    :                   :         :           :                
+VCCIO6                       : B28       : power  :                   : 2.5V    : 6         :                
+GND                          : C1        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : C2        :        :                   :         : 1         :                
+oKP_value_sig[1]             : C3        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[0]           : C4        : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C5        :        :                   :         : 8         :                
+oSRAM_iData_sig[6]           : C6        : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[3]         : C7        : output : 2.5 V             :         : 8         : N              
+oROM_address_sig[3]          : C8        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[7]                : C9        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_buffer_sig[14]   : C10       : output : 2.5 V             :         : 8         : N              
+oFC_q_old_sig[7]             : C11       : output : 2.5 V             :         : 8         : N              
+oKP_value_sig[2]             : C12       : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[15]        : C13       : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C14       :        :                   :         : 8         :                
+oSRAM_iData_buffer_sig[0]    : C15       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[20]     : C16       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[11]     : C17       : output : 2.5 V             :         : 7         : N              
+oSRAM_rw_sig                 : C18       : output : 2.5 V             :         : 7         : N              
+oSRAM_trigger_sig            : C19       : output : 2.5 V             :         : 7         : N              
+oreset_sig                   : C20       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_buffer_sig[9]    : C21       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C22       :        :                   :         : 7         :                
+oFC_clk_en_sig               : C23       : output : 2.5 V             :         : 7         : N              
+oSRAM_oData_sig[10]          : C24       : output : 2.5 V             :         : 7         : N              
+oFC_q_old_sig[5]             : C25       : output : 2.5 V             :         : 7         : N              
+oROM_q_sig[3]                : C26       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_sig[11]          : C27       : output : 2.5 V             :         : 6         : N              
+GND                          : C28       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D1        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D2        :        :                   :         : 1         :                
+GND                          : D3        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D4        :        :                   :         : 8         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D5        :        :                   :         : 8         :                
+oSRAM_iData_buffer_sig[3]    : D6        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[2]                : D7        : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[18]        : D8        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_buffer_sig[13]   : D9        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[10]               : D10       : output : 2.5 V             :         : 8         : N              
+oROM_address_sig[5]          : D11       : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[13]     : D12       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_buffer_sig[6]    : D13       : output : 2.5 V             :         : 8         : N              
+odigit_count_sig[0]          : D14       : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[0]      : D15       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : D16       :        :                   :         : 7         :                
+oFC_q_old_sig[0]             : D17       : output : 2.5 V             :         : 7         : N              
+oROM_address_sig[7]          : D18       : output : 2.5 V             :         : 7         : N              
+oSRAM_oData_sig[1]           : D19       : output : 2.5 V             :         : 7         : N              
+ostate_ul_sig.INITIALIZATION : D20       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_buffer_sig[8]    : D21       : output : 2.5 V             :         : 7         : N              
+oRD_reset_sig                : D22       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[8]      : D23       : output : 2.5 V             :         : 7         : N              
+oFC_q_old_sig[4]             : D24       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[7]      : D25       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : D26       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D27       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D28       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E1        :        :                   :         : 1         :                
+~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : E2        : input  : 3.3-V LVTTL       :         : 1         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E3        :        :                   :         : 1         :                
+oIC_q_sig[5]                 : E4        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[9]                : E5        : output : 2.5 V             :         : 8         : N              
+VCCIO8                       : E6        : power  :                   : 2.5V    : 8         :                
+oFC_clk_en_count_sig[17]     : E7        : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[15]     : E8        : output : 2.5 V             :         : 8         : N              
+VCCIO8                       : E9        : power  :                   : 2.5V    : 8         :                
+oSRAM_oData_sig[4]           : E10       : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[23]     : E11       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[1]           : E12       : output : 2.5 V             :         : 8         : N              
+VCCIO8                       : E13       : power  :                   : 2.5V    : 8         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E14       :        :                   :         : 8         :                
+oROM_q_sig[14]               : E15       : output : 2.5 V             :         : 7         : N              
+VCCIO7                       : E16       : power  :                   : 2.5V    : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E17       :        :                   :         : 7         :                
+LEDR[5]                      : E18       : output : 2.5 V             :         : 7         : Y              
+LEDR[2]                      : E19       : output : 2.5 V             :         : 7         : Y              
+VCCIO7                       : E20       : power  :                   : 2.5V    : 7         :                
+LEDG[0]                      : E21       : output : 2.5 V             :         : 7         : Y              
+LEDG[1]                      : E22       : output : 2.5 V             :         : 7         : Y              
+VCCIO7                       : E23       : power  :                   : 2.5V    : 7         :                
+oIC_q_sig[7]                 : E24       : output : 2.5 V             :         : 7         : N              
+LEDG[2]                      : E25       : output : 2.5 V             :         : 7         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E26       :        :                   :         : 6         :                
+oFC_clk_en_count_sig[16]     : E27       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[10]        : E28       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : F1        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F2        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F3        :        :                   :         : 1         :                
+~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP : F4        : input  : 3.3-V LVTTL       :         : 1         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : F5        :        :                   :         : 1         :                
+GND                          : F6        : gnd    :                   :         :           :                
+oSRAM_iData_sig[7]           : F7        : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[3]             : F8        : output : 2.5 V             :         : 8         : N              
+GND                          : F9        : gnd    :                   :         :           :                
+oFC_clk_en_count_sig[27]     : F10       : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[19]        : F11       : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[0]             : F12       : output : 2.5 V             :         : 8         : N              
+GND                          : F13       : gnd    :                   :         :           :                
+oFC_clk_en_count_sig[26]     : F14       : output : 2.5 V             :         : 8         : N              
+LEDR[14]                     : F15       : output : 2.5 V             :         : 7         : Y              
+GND                          : F16       : gnd    :                   :         :           :                
+oFC_clk_en_count_sig[19]     : F17       : output : 2.5 V             :         : 7         : N              
+LEDR[4]                      : F18       : output : 2.5 V             :         : 7         : Y              
+LEDR[1]                      : F19       : output : 2.5 V             :         : 7         : Y              
+GND                          : F20       : gnd    :                   :         :           :                
+LEDR[3]                      : F21       : output : 2.5 V             :         : 7         : Y              
+oIC_clk_en_sig               : F22       : output : 2.5 V             :         : 7         : N              
+GND                          : F23       : gnd    :                   :         :           :                
+oROM_address_sig[6]          : F24       : output : 2.5 V             :         : 6         : N              
+oSRAM_iData_sig[8]           : F25       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : F26       :        :                   :         : 6         :                
+oSRAM_iData_sig[4]           : F27       : output : 2.5 V             :         : 6         : N              
+oIC_q_sig[0]                 : F28       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : G1        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G2        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G3        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G4        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G5        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G6        :        :                   :         : 1         :                
+oROM_q_sig[0]                : G7        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[13]               : G8        : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[1]         : G9        : output : 2.5 V             :         : 8         : N              
+oFC_max_tick_sig             : G10       : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[11]          : G11       : output : 2.5 V             :         : 8         : N              
+oSRAM_ready_sig              : G12       : output : 2.5 V             :         : 8         : N              
+oIC_clear_sig                : G13       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[5]           : G14       : output : 2.5 V             :         : 8         : N              
+LEDR[15]                     : G15       : output : 2.5 V             :         : 7         : Y              
+oSRAM_address_sig[4]         : G16       : output : 2.5 V             :         : 7         : N              
+LEDR[9]                      : G17       : output : 2.5 V             :         : 7         : Y              
+oFC_clk_en_count_sig[10]     : G18       : output : 2.5 V             :         : 7         : N              
+LEDR[0]                      : G19       : output : 2.5 V             :         : 7         : Y              
+oSRAM_oData_sig[15]          : G20       : output : 2.5 V             :         : 7         : N              
+oFC_q_old_sig[2]             : G21       : output : 2.5 V             :         : 7         : N              
+oSRAM_oData_sig[12]          : G22       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : G23       :        :                   :         : 6         :                
+oSRAM_iData_sig[12]          : G24       : output : 2.5 V             :         : 6         : N              
+ostate_ul_sig.TEST_MODE      : G25       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_count_sig[25]     : G26       : output : 2.5 V             :         : 6         : N              
+oKP_value_sig[4]             : G27       : output : 2.5 V             :         : 6         : N              
+oKP_value_sig[3]             : G28       : output : 2.5 V             :         : 6         : N              
+VCCIO1                       : H1        : power  :                   : 3.3V    : 1         :                
+GND                          : H2        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : H3        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : H4        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : H5        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : H6        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : H7        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : H8        :        :                   :         : 8         :                
+GNDA3                        : H9        : gnd    :                   :         :           :                
+oROM_address_sig[1]          : H10       : output : 2.5 V             :         : 8         : N              
+VCCIO8                       : H11       : power  :                   : 2.5V    : 8         :                
+oROM_address_sig[4]          : H12       : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H13       :        :                   :         : 8         :                
+oSRAM_oData_sig[2]           : H14       : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H15       :        :                   :         : 7         :                
+LEDR[11]                     : H16       : output : 2.5 V             :         : 7         : Y              
+LEDR[13]                     : H17       : output : 2.5 V             :         : 7         : Y              
+VCCIO7                       : H18       : power  :                   : 2.5V    : 7         :                
+LEDR[7]                      : H19       : output : 2.5 V             :         : 7         : Y              
+GNDA2                        : H20       : gnd    :                   :         :           :                
+oSRAM_iData_buffer_sig[2]    : H21       : output : 2.5 V             :         : 7         : N              
+oIC_q_sig[3]                 : H22       : output : 2.5 V             :         : 6         : N              
+oSRAM_iData_buffer_sig[10]   : H23       : output : 2.5 V             :         : 6         : N              
+oFC_q_sig[7]                 : H24       : output : 2.5 V             :         : 6         : N              
+ostate_ul_program_sig.SIXTY  : H25       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H26       :        :                   :         : 6         :                
+GND                          : H27       : gnd    :                   :         :           :                
+VCCIO6                       : H28       : power  :                   : 2.5V    : 6         :                
+GND+                         : J1        :        :                   :         : 1         :                
+GND                          : J2        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J3        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J4        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J5        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J6        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J7        :        :                   :         : 1         :                
+VCCA3                        : J8        : power  :                   : 2.5V    :           :                
+VCCD_PLL3                    : J9        : power  :                   : 1.2V    :           :                
+oIC_en_sig                   : J10       : output : 2.5 V             :         : 8         : N              
+GND                          : J11       : gnd    :                   :         :           :                
+oSRAM_address_sig[14]        : J12       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_buffer_sig[1]    : J13       : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J14       :        :                   :         : 8         :                
+LEDR[10]                     : J15       : output : 2.5 V             :         : 7         : Y              
+LEDR[12]                     : J16       : output : 2.5 V             :         : 7         : Y              
+LEDR[8]                      : J17       : output : 2.5 V             :         : 7         : Y              
+GND                          : J18       : gnd    :                   :         :           :                
+LEDR[6]                      : J19       : output : 2.5 V             :         : 7         : Y              
+VCCD_PLL2                    : J20       : power  :                   : 1.2V    :           :                
+VCCA2                        : J21       : power  :                   : 2.5V    :           :                
+oIC_q_sig[4]                 : J22       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[17]        : J23       : output : 2.5 V             :         : 6         : N              
+ostate_ul_program_sig.ONE20  : J24       : output : 2.5 V             :         : 6         : N              
+oIC_clk_en_count_sig[2]      : J25       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J26       :        :                   :         : 6         :                
+GND+                         : J27       :        :                   :         : 6         :                
+GND+                         : J28       :        :                   :         : 6         :                
+LCD_DATA[4]                  : K1        : output : 3.3-V LVTTL       :         : 1         : Y              
+LCD_DATA[5]                  : K2        : output : 3.3-V LVTTL       :         : 1         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : K3        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K4        :        :                   :         : 1         :                
+VCCIO1                       : K5        : power  :                   : 3.3V    : 1         :                
+GND                          : K6        : gnd    :                   :         :           :                
+LCD_DATA[3]                  : K7        : output : 3.3-V LVTTL       :         : 1         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : K8        :        :                   :         : 1         :                
+VCCINT                       : K9        : power  :                   : 1.2V    :           :                
+GND                          : K10       : gnd    :                   :         :           :                
+VCCINT                       : K11       : power  :                   : 1.2V    :           :                
+GND                          : K12       : gnd    :                   :         :           :                
+VCCINT                       : K13       : power  :                   : 1.2V    :           :                
+GND                          : K14       : gnd    :                   :         :           :                
+VCCINT                       : K15       : power  :                   : 1.2V    :           :                
+GND                          : K16       : gnd    :                   :         :           :                
+VCCINT                       : K17       : power  :                   : 1.2V    :           :                
+GND                          : K18       : gnd    :                   :         :           :                
+VCCINT                       : K19       : power  :                   : 1.2V    :           :                
+GND                          : K20       : gnd    :                   :         :           :                
+oFC_q_sig[0]                 : K21       : output : 2.5 V             :         : 6         : N              
+oSRAM_oData_sig[14]          : K22       : output : 2.5 V             :         : 6         : N              
+GND                          : K23       : gnd    :                   :         :           :                
+VCCIO6                       : K24       : power  :                   : 2.5V    : 6         :                
+oFC_en_sig                   : K25       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : K26       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K27       :        :                   :         : 6         :                
+oSRAM_oData_sig[3]           : K28       : output : 2.5 V             :         : 6         : N              
+LCD_DATA[1]                  : L1        : output : 3.3-V LVTTL       :         : 1         : Y              
+LCD_DATA[2]                  : L2        : output : 3.3-V LVTTL       :         : 1         : Y              
+LCD_DATA[0]                  : L3        : output : 3.3-V LVTTL       :         : 1         : Y              
+LCD_EN                       : L4        : output : 3.3-V LVTTL       :         : 1         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : L5        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : L6        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : L7        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : L8        :        :                   :         : 1         :                
+GND                          : L9        : gnd    :                   :         :           :                
+VCCINT                       : L10       : power  :                   : 1.2V    :           :                
+GND                          : L11       : gnd    :                   :         :           :                
+VCCINT                       : L12       : power  :                   : 1.2V    :           :                
+GND                          : L13       : gnd    :                   :         :           :                
+VCCINT                       : L14       : power  :                   : 1.2V    :           :                
+GND                          : L15       : gnd    :                   :         :           :                
+VCCINT                       : L16       : power  :                   : 1.2V    :           :                
+GND                          : L17       : gnd    :                   :         :           :                
+VCCINT                       : L18       : power  :                   : 1.2V    :           :                
+GND                          : L19       : gnd    :                   :         :           :                
+VCCINT                       : L20       : power  :                   : 1.2V    :           :                
+oSRAM_iData_sig[15]          : L21       : output : 2.5 V             :         : 6         : N              
+oSRAM_iData_sig[2]           : L22       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_count_sig[14]     : L23       : output : 2.5 V             :         : 6         : N              
+oROM_q_sig[11]               : L24       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : L25       :        :                   :         : 6         :                
+oFC_clk_en_count_sig[22]     : L26       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_count_sig[5]      : L27       : output : 2.5 V             :         : 6         : N              
+oIC_q_sig[2]                 : L28       : output : 2.5 V             :         : 6         : N              
+LCD_RW                       : M1        : output : 3.3-V LVTTL       :         : 1         : Y              
+LCD_RS                       : M2        : output : 3.3-V LVTTL       :         : 1         : Y              
+LCD_DATA[6]                  : M3        : output : 3.3-V LVTTL       :         : 1         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : M4        :        :                   :         : 1         :                
+LCD_DATA[7]                  : M5        : output : 3.3-V LVTTL       :         : 1         : Y              
+nSTATUS                      : M6        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : M7        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : M8        :        :                   :         : 1         :                
+VCCINT                       : M9        : power  :                   : 1.2V    :           :                
+GND                          : M10       : gnd    :                   :         :           :                
+VCCINT                       : M11       : power  :                   : 1.2V    :           :                
+GND                          : M12       : gnd    :                   :         :           :                
+VCCINT                       : M13       : power  :                   : 1.2V    :           :                
+GND                          : M14       : gnd    :                   :         :           :                
+VCCINT                       : M15       : power  :                   : 1.2V    :           :                
+GND                          : M16       : gnd    :                   :         :           :                
+VCCINT                       : M17       : power  :                   : 1.2V    :           :                
+GND                          : M18       : gnd    :                   :         :           :                
+VCCINT                       : M19       : power  :                   : 1.2V    :           :                
+GND                          : M20       : gnd    :                   :         :           :                
+KEY[1]                       : M21       : input  : 2.5 V             :         : 6         : Y              
+MSEL2                        : M22       :        :                   :         : 6         :                
+KEY[0]                       : M23       : input  : 2.5 V             :         : 6         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : M24       :        :                   :         : 6         :                
+oSRAM_address_sig[13]        : M25       : output : 2.5 V             :         : 6         : N              
+oSRAM_iData_buffer_sig[12]   : M26       : output : 2.5 V             :         : 6         : N              
+oSRAM_oData_sig[6]           : M27       : output : 2.5 V             :         : 6         : N              
+oROM_q_sig[8]                : M28       : output : 2.5 V             :         : 6         : N              
+VCCIO1                       : N1        : power  :                   : 3.3V    : 1         :                
+GND                          : N2        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : N3        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : N4        :        :                   :         : 1         :                
+VCCIO1                       : N5        : power  :                   : 3.3V    : 1         :                
+GND                          : N6        : gnd    :                   :         :           :                
+~ALTERA_DATA0~ / RESERVED_INPUT_WITH_WEAK_PULLUP : N7        : input  : 3.3-V LVTTL       :         : 1         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : N8        :        :                   :         : 1         :                
+GND                          : N9        : gnd    :                   :         :           :                
+VCCINT                       : N10       : power  :                   : 1.2V    :           :                
+GND                          : N11       : gnd    :                   :         :           :                
+VCCINT                       : N12       : power  :                   : 1.2V    :           :                
+GND                          : N13       : gnd    :                   :         :           :                
+VCCINT                       : N14       : power  :                   : 1.2V    :           :                
+GND                          : N15       : gnd    :                   :         :           :                
+VCCINT                       : N16       : power  :                   : 1.2V    :           :                
+GND                          : N17       : gnd    :                   :         :           :                
+VCCINT                       : N18       : power  :                   : 1.2V    :           :                
+GND                          : N19       : gnd    :                   :         :           :                
+VCCINT                       : N20       : power  :                   : 1.2V    :           :                
+KEY[2]                       : N21       : input  : 2.5 V             :         : 6         : Y              
+MSEL0                        : N22       :        :                   :         : 6         :                
+GND                          : N23       : gnd    :                   :         :           :                
+VCCIO6                       : N24       : power  :                   : 2.5V    : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : N25       :        :                   :         : 6         :                
+oIC_max_tick_sig             : N26       : output : 2.5 V             :         : 6         : N              
+GND                          : N27       : gnd    :                   :         :           :                
+VCCIO6                       : N28       : power  :                   : 2.5V    : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P1        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P2        :        :                   :         : 1         :                
+~ALTERA_DCLK~                : P3        : output : 3.3-V LVTTL       :         : 1         : N              
+nCONFIG                      : P4        :        :                   :         : 1         :                
+altera_reserved_tck          : P5        : input  : 3.3-V LVTTL       :         : 1         : N              
+altera_reserved_tdo          : P6        : output : 3.3-V LVTTL       :         : 1         : N              
+altera_reserved_tdi          : P7        : input  : 3.3-V LVTTL       :         : 1         : N              
+altera_reserved_tms          : P8        : input  : 3.3-V LVTTL       :         : 1         : N              
+VCCINT                       : P9        : power  :                   : 1.2V    :           :                
+GND                          : P10       : gnd    :                   :         :           :                
+VCCINT                       : P11       : power  :                   : 1.2V    :           :                
+GND                          : P12       : gnd    :                   :         :           :                
+VCCINT                       : P13       : power  :                   : 1.2V    :           :                
+GND                          : P14       : gnd    :                   :         :           :                
+VCCINT                       : P15       : power  :                   : 1.2V    :           :                
+GND                          : P16       : gnd    :                   :         :           :                
+VCCINT                       : P17       : power  :                   : 1.2V    :           :                
+GND                          : P18       : gnd    :                   :         :           :                
+VCCINT                       : P19       : power  :                   : 1.2V    :           :                
+GND                          : P20       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P21       :        :                   :         : 5         :                
+MSEL3                        : P22       :        :                   :         : 6         :                
+MSEL1                        : P23       :        :                   :         : 6         :                
+CONF_DONE                    : P24       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P25       :        :                   :         : 6         :                
+odigit_count_sig[1]          : P26       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[6]         : P27       : output : 2.5 V             :         : 6         : N              
+~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN : P28       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : R1        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R2        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R3        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R4        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R5        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R6        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R7        :        :                   :         : 2         :                
+nCE                          : R8        :        :                   :         : 1         :                
+GND                          : R9        : gnd    :                   :         :           :                
+VCCINT                       : R10       : power  :                   : 1.2V    :           :                
+GND                          : R11       : gnd    :                   :         :           :                
+VCCINT                       : R12       : power  :                   : 1.2V    :           :                
+GND                          : R13       : gnd    :                   :         :           :                
+VCCINT                       : R14       : power  :                   : 1.2V    :           :                
+GND                          : R15       : gnd    :                   :         :           :                
+VCCINT                       : R16       : power  :                   : 1.2V    :           :                
+GND                          : R17       : gnd    :                   :         :           :                
+VCCINT                       : R18       : power  :                   : 1.2V    :           :                
+GND                          : R19       : gnd    :                   :         :           :                
+VCCINT                       : R20       : power  :                   : 1.2V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R21       :        :                   :         : 5         :                
+oIC_clk_en_count_sig[1]      : R22       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : R23       :        :                   :         : 5         :                
+KEY[3]                       : R24       : input  : 2.5 V             :         : 5         : Y              
+oFC_clk_en_count_sig[9]      : R25       : output : 2.5 V             :         : 5         : N              
+odigit_count_sig[2]          : R26       : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_buffer_sig[11]   : R27       : output : 2.5 V             :         : 5         : N              
+oSRAM_address_sig[5]         : R28       : output : 2.5 V             :         : 5         : N              
+VCCIO2                       : T1        : power  :                   : 3.3V    : 2         :                
+GND                          : T2        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T3        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T4        :        :                   :         : 2         :                
+VCCIO2                       : T5        : power  :                   : 3.3V    : 2         :                
+GND                          : T6        : gnd    :                   :         :           :                
+SRAM_ADDR[9]                 : T7        : output : 3.3-V LVTTL       :         : 2         : Y              
+SRAM_ADDR[19]                : T8        : output : 3.3-V LVTTL       :         : 2         : Y              
+VCCINT                       : T9        : power  :                   : 1.2V    :           :                
+GND                          : T10       : gnd    :                   :         :           :                
+VCCINT                       : T11       : power  :                   : 1.2V    :           :                
+GND                          : T12       : gnd    :                   :         :           :                
+VCCINT                       : T13       : power  :                   : 1.2V    :           :                
+GND                          : T14       : gnd    :                   :         :           :                
+VCCINT                       : T15       : power  :                   : 1.2V    :           :                
+GND                          : T16       : gnd    :                   :         :           :                
+VCCINT                       : T17       : power  :                   : 1.2V    :           :                
+GND                          : T18       : gnd    :                   :         :           :                
+VCCINT                       : T19       : power  :                   : 1.2V    :           :                
+GND                          : T20       : gnd    :                   :         :           :                
+ostate_ul_program_address_sig : T21       : output : 2.5 V             :         : 5         : N              
+oSRAM_address_sig[7]         : T22       : output : 2.5 V             :         : 5         : N              
+GND                          : T23       : gnd    :                   :         :           :                
+VCCIO5                       : T24       : power  :                   : 2.5V    : 5         :                
+oSRAM_iData_buffer_sig[15]   : T25       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : T26       :        :                   :         : 5         :                
+GND                          : T27       : gnd    :                   :         :           :                
+VCCIO5                       : T28       : power  :                   : 2.5V    : 5         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U1        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U2        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U3        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U4        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U5        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U6        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U7        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U8        :        :                   :         : 2         :                
+GND                          : U9        : gnd    :                   :         :           :                
+VCCINT                       : U10       : power  :                   : 1.2V    :           :                
+GND                          : U11       : gnd    :                   :         :           :                
+VCCINT                       : U12       : power  :                   : 1.2V    :           :                
+GND                          : U13       : gnd    :                   :         :           :                
+VCCINT                       : U14       : power  :                   : 1.2V    :           :                
+GND                          : U15       : gnd    :                   :         :           :                
+VCCINT                       : U16       : power  :                   : 1.2V    :           :                
+GND                          : U17       : gnd    :                   :         :           :                
+VCCINT                       : U18       : power  :                   : 1.2V    :           :                
+GND                          : U19       : gnd    :                   :         :           :                
+VCCINT                       : U20       : power  :                   : 1.2V    :           :                
+ostate_ul_sig.RST            : U21       : output : 2.5 V             :         : 5         : N              
+oIC_q_old_sig[7]             : U22       : output : 2.5 V             :         : 5         : N              
+oIC_q_old_sig[2]             : U23       : output : 2.5 V             :         : 5         : N              
+oIC_q_old_sig[4]             : U24       : output : 2.5 V             :         : 5         : N              
+oload_complete_sig           : U25       : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_sig[10]          : U26       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : U27       :        :                   :         : 5         :                
+oFC_clk_en_count_sig[24]     : U28       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : V1        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V2        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V3        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V4        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V5        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V6        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V7        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V8        :        :                   :         : 2         :                
+VCCINT                       : V9        : power  :                   : 1.2V    :           :                
+GND                          : V10       : gnd    :                   :         :           :                
+VCCINT                       : V11       : power  :                   : 1.2V    :           :                
+GND                          : V12       : gnd    :                   :         :           :                
+VCCINT                       : V13       : power  :                   : 1.2V    :           :                
+GND                          : V14       : gnd    :                   :         :           :                
+VCCINT                       : V15       : power  :                   : 1.2V    :           :                
+GND                          : V16       : gnd    :                   :         :           :                
+VCCINT                       : V17       : power  :                   : 1.2V    :           :                
+GND                          : V18       : gnd    :                   :         :           :                
+VCCINT                       : V19       : power  :                   : 1.2V    :           :                
+GND                          : V20       : gnd    :                   :         :           :                
+oFC_q_sig[3]                 : V21       : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[12]     : V22       : output : 2.5 V             :         : 5         : N              
+oFC_clear_sig                : V23       : output : 2.5 V             :         : 5         : N              
+oFC_q_old_sig[6]             : V24       : output : 2.5 V             :         : 5         : N              
+oSRAM_oData_sig[8]           : V25       : output : 2.5 V             :         : 5         : N              
+oROM_q_sig[4]                : V26       : output : 2.5 V             :         : 5         : N              
+oSRAM_address_sig[2]         : V27       : output : 2.5 V             :         : 5         : N              
+oSRAM_address_sig[12]        : V28       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : W1        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : W2        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : W3        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : W4        :        :                   :         : 2         :                
+VCCIO2                       : W5        : power  :                   : 3.3V    : 2         :                
+GND                          : W6        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : W7        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : W8        :        :                   :         : 2         :                
+GND                          : W9        : gnd    :                   :         :           :                
+VCCINT                       : W10       : power  :                   : 1.2V    :           :                
+GND                          : W11       : gnd    :                   :         :           :                
+VCCINT                       : W12       : power  :                   : 1.2V    :           :                
+GND                          : W13       : gnd    :                   :         :           :                
+VCCINT                       : W14       : power  :                   : 1.2V    :           :                
+GND                          : W15       : gnd    :                   :         :           :                
+VCCINT                       : W16       : power  :                   : 1.2V    :           :                
+GND                          : W17       : gnd    :                   :         :           :                
+VCCINT                       : W18       : power  :                   : 1.2V    :           :                
+GND                          : W19       : gnd    :                   :         :           :                
+VCCINT                       : W20       : power  :                   : 1.2V    :           :                
+oROM_q_sig[15]               : W21       : output : 2.5 V             :         : 5         : N              
+oROM_address_sig[0]          : W22       : output : 2.5 V             :         : 5         : N              
+GND                          : W23       : gnd    :                   :         :           :                
+VCCIO5                       : W24       : power  :                   : 2.5V    : 5         :                
+oSRAM_oData_sig[5]           : W25       : output : 2.5 V             :         : 5         : N              
+oSRAM_oData_sig[9]           : W26       : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_buffer_sig[4]    : W27       : output : 2.5 V             :         : 5         : N              
+oROM_q_sig[6]                : W28       : output : 2.5 V             :         : 5         : N              
+GND+                         : Y1        :        :                   :         : 2         :                
+CLOCK_50                     : Y2        : input  : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y3        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y4        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y5        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y6        :        :                   :         : 2         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y7        :        :                   :         : 2         :                
+VCCA1                        : Y8        : power  :                   : 2.5V    :           :                
+VCCD_PLL1                    : Y9        : power  :                   : 1.2V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y10       :        :                   :         : 3         :                
+GND                          : Y11       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y12       :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y13       :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y14       :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y15       :        :                   :         : 3         :                
+GPIO[5]                      : Y16       : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[3]                      : Y17       : bidir  : 3.3-V LVTTL       :         : 4         : Y              
+GND                          : Y18       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y19       :        :                   :         : 4         :                
+VCCD_PLL4                    : Y20       : power  :                   : 1.2V    :           :                
+VCCA4                        : Y21       : power  :                   : 2.5V    :           :                
+ostate_ul_program_data_sig   : Y22       : output : 2.5 V             :         : 5         : N              
+oDB_reset_sig                : Y23       : output : 2.5 V             :         : 5         : N              
+oFC_q_sig[6]                 : Y24       : output : 2.5 V             :         : 5         : N              
+oROM_q_sig[12]               : Y25       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y26       :        :                   :         : 5         :                
+GND+                         : Y27       :        :                   :         : 5         :                
+GND+                         : Y28       :        :                   :         : 5         :                

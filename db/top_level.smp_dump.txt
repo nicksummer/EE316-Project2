@@ -1,0 +1,80 @@
+
+State Machine - |project_1|state_ul_sig
+Name state_ul_sig.PWM_GENERATION state_ul_sig.TEST_MODE state_ul_sig.INITIALIZATION state_ul_sig.RST 
+state_ul_sig.RST 0 0 0 0 
+state_ul_sig.INITIALIZATION 0 0 1 1 
+state_ul_sig.TEST_MODE 0 1 0 1 
+state_ul_sig.PWM_GENERATION 1 0 0 1 
+
+State Machine - |project_1|sram_controller:inst_sram_controller|rw_state
+Name rw_state.WT rw_state.RD rw_state.RST 
+rw_state.RST 0 0 0 
+rw_state.RD 0 1 1 
+rw_state.WT 1 0 1 
+
+State Machine - |project_1|sram_controller:inst_sram_controller|fstate_read
+Name fstate_read.FINISH fstate_read.LOAD fstate_read.PULSE fstate_read.INIT fstate_read.STANDBY 
+fstate_read.STANDBY 0 0 0 0 0 
+fstate_read.INIT 0 0 0 1 1 
+fstate_read.PULSE 0 0 1 0 1 
+fstate_read.LOAD 0 1 0 0 1 
+fstate_read.FINISH 1 0 0 0 1 
+
+State Machine - |project_1|sram_controller:inst_sram_controller|fstate_write
+Name fstate_write.FINISH fstate_write.PULSE fstate_write.INIT fstate_write.STANDBY 
+fstate_write.STANDBY 0 0 0 0 
+fstate_write.INIT 0 0 1 1 
+fstate_write.PULSE 0 1 0 1 
+fstate_write.FINISH 1 0 0 1 
+
+State Machine - |project_1|i2c_user_level:inst_i2c_user_level2|state
+Name state.wait_for_stop state.start_i2c state.data_ready state.start 
+state.start 0 0 0 0 
+state.data_ready 0 0 1 1 
+state.start_i2c 0 1 0 1 
+state.wait_for_stop 1 0 0 1 
+
+State Machine - |project_1|i2c_user_level:inst_i2c_user_level2|i2c_master_2:inst_i2c|state
+Name state.stop state.mstr_ack state.slv_ack2 state.rd state.wr state.slv_ack1 state.command state.start state.ready 
+state.ready 0 0 0 0 0 0 0 0 0 
+state.start 0 0 0 0 0 0 0 1 1 
+state.command 0 0 0 0 0 0 1 0 1 
+state.slv_ack1 0 0 0 0 0 1 0 0 1 
+state.wr 0 0 0 0 1 0 0 0 1 
+state.rd 0 0 0 1 0 0 0 0 1 
+state.slv_ack2 0 0 1 0 0 0 0 0 1 
+state.mstr_ack 0 1 0 0 0 0 0 0 1 
+state.stop 1 0 0 0 0 0 0 0 1 
+
+State Machine - |project_1|i2c_user_level:inst_i2c_user_level|state
+Name state.wait_for_stop state.start_i2c state.data_ready state.start 
+state.start 0 0 0 0 
+state.data_ready 0 0 1 1 
+state.start_i2c 0 1 0 1 
+state.wait_for_stop 1 0 0 1 
+
+State Machine - |project_1|i2c_user_level:inst_i2c_user_level|i2c_master_2:inst_i2c|state
+Name state.stop state.mstr_ack state.slv_ack2 state.rd state.wr state.slv_ack1 state.command state.start state.ready 
+state.ready 0 0 0 0 0 0 0 0 0 
+state.start 0 0 0 0 0 0 0 1 1 
+state.command 0 0 0 0 0 0 1 0 1 
+state.slv_ack1 0 0 0 0 0 1 0 0 1 
+state.wr 0 0 0 0 1 0 0 0 1 
+state.rd 0 0 0 1 0 0 0 0 1 
+state.slv_ack2 0 0 1 0 0 0 0 0 1 
+state.mstr_ack 0 1 0 0 0 0 0 0 1 
+state.stop 1 0 0 0 0 0 0 0 1 
+
+State Machine - |project_1|LCD_Parallel_user_logic:inst_lcd_user_logic|state
+Name state.repeat state.busy_high state.data_valid state.ready state.start 
+state.start 0 0 0 0 0 
+state.ready 0 0 0 1 1 
+state.data_valid 0 0 1 0 1 
+state.busy_high 0 1 0 0 1 
+state.repeat 1 0 0 0 1 
+
+State Machine - |project_1|LCD_Parallel_user_logic:inst_lcd_user_logic|LCD_Parallel:Inst_LCD_Parallel|state
+Name state.enlow2 state.enhigh state.enlow 
+state.enlow 0 0 0 
+state.enhigh 0 1 1 
+state.enlow2 1 0 1 

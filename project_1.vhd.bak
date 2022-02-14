@@ -1,0 +1,707 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use ieee.numeric_std.all;
+use work.Common.all;
+
+entity project_1 is
+	generic(
+		COUNTER_N                      : integer  := 8;
+		INIT_COUNTER_CLK_EN_MAX        : unsigned := b"100";
+		FUNCTIONAL_COUNTER_CLK_EN_MAX  : unsigned := x"02FAF080"; -- should be x"02FAF080" for 1sec delay. Simulation: x"00000004"
+		RESET_DELAY_DELAY              : unsigned := x"FFFFF"     -- Real hardware value: X"FFFFF". Simulation value: X"00004".
+	);
+	port (
+		CLOCK_50   : in std_logic;                        -- 50MHz clock
+		KEY        : in std_logic_vector(2 downto 0);     -- reset key
+	   GPIO       : inout std_logic_vector(35 downto 0); -- GPIO (for keypad)
+	   LEDR       : out std_logic_vector(15 downto 0);    -- red LEDs
+		LEDG       : out std_logic_vector(2 downto 0);    -- green LEDs
+		SRAM_DQ    : inout std_logic_vector(15 downto 0);   -- SRAM data
+		SRAM_ADDR  : out std_logic_vector(19 downto 0);   -- SRAM address
+		SRAM_CE_N  : out std_logic;                       -- SRAM CE
+		SRAM_UB_N  : out std_logic;                       -- SRAM UB
+		SRAM_LB_N  : out std_logic;                       -- SRAM LB
+		SRAM_WE_N  : out std_logic;                       -- SRAM WE
+		SRAM_OE_N  : out std_logic;                       -- SRAM OE
+		HEX0       : out std_logic_vector(6 downto 0);    -- HEX0 seven segment output
+		HEX1       : out std_logic_vector(6 downto 0);    -- HEX1 seven segment output
+		HEX2       : out std_logic_vector(6 downto 0);    -- HEX2 seven segment output
+		HEX3       : out std_logic_vector(6 downto 0);    -- HEX3 seven segment output
+		HEX4       : out std_logic_vector(6 downto 0);    -- HEX4 seven segment output
+		HEX5       : out std_logic_vector(6 downto 0);     -- HEX5 seven segment output
+		
+		
+		-- signal outputs for simulation
+		oreset_sig    : out std_logic;
+		oKP_value_sig : out std_logic_vector(4 downto 0);
+		oRD_reset_sig : out std_logic;
+		oDB_reset_sig : out std_logic;
+		
+		ostate_ul_sig                 : out t_ul;
+		ostate_ul_program_sig         : out t_ul_program;
+		ostate_ul_program_data_sig    : out t_ul_program_data;
+		ostate_ul_program_address_sig : out t_ul_program_address;
+		odigit_count_sig              : out unsigned(2 downto 0);                        
+		oload_complete_sig            : out std_logic := '0';                            
+		otriggered_sig                : out unsigned(1 downto 0);
+		
+		-- SRAM controller signals
+		oSRAM_iData_sig        : out std_logic_vector(15 downto 0);                      -- Data to SRAM controller
+		oSRAM_iData_buffer_sig : out std_logic_vector(15 downto 0);                      -- SRAM iData tristate buffer
+		oSRAM_oData_sig       : out std_logic_vector(15 downto 0);                       -- Data from SRAM controller
+		oSRAM_address_sig     : out std_logic_vector(19 downto 0);                       -- Address to SRAM controller
+		oSRAM_rw_sig          : out std_logic;                                           -- Read/Write signal for SRAM controller
+		oSRAM_trigger_sig     : out std_logic;                                           -- Trigger to SRAM controller
+		oSRAM_ready_sig       : out std_logic;                                           -- Ready signal from SRAM controller
+		
+		--ROM signals 
+		oROM_address_sig      : out std_logic_vector(7 downto 0);                        -- Address selection input to ROM
+		oROM_q_sig            : out std_logic_vector(15 downto 0);                       -- Data output from ROM
+		
+		-- Init counter signals
+		oIC_clear_sig         : out std_logic;                                           -- Synchronous clear to init counter
+		oIC_en_sig            : out std_logic;                                           -- Enable to init counter
+		oIC_max_tick_sig      : out std_logic;                                           -- Max tick from init counter
+		oIC_q_sig             : out std_logic_vector(COUNTER_N-1 downto 0);              -- Q address output from init counter
+		oIC_clk_en_sig        : out std_logic;                                           -- Clock enable signal to the init counter (period 100ns)
+		oIC_clk_en_count_sig  : out unsigned(2 downto 0) := b"000";                      -- Unsigned clock enable counter for the init counter (to create a clk_en signal of period 100ns)
+		oIC_q_old_sig         : out std_logic_vector(COUNTER_N-1 downto 0) := x"02";     -- Old Q address output from init counter (to detect changes)
+		
+		-- Functional counter signals
+		oFC_clear_sig         : out std_logic;                                           -- Synchronous clear to functional counter
+		oFC_en_sig            : out std_logic;                                           -- Enable to functional counter
+		oFC_up_sig            : out std_logic;
+		oFC_max_tick_sig      : out std_logic;                                           -- Max tick from functional counter
+		oFC_q_sig             : out std_logic_vector(COUNTER_N-1 downto 0);              -- Q address output from functional counter
+		oFC_clk_en_sig        : out std_logic;                                           -- Clock enable signal to the functional counter (period 1s)
+		oFC_clk_en_count_sig  : out unsigned(27 downto 0) := x"0000000";                 -- Unsigned clock enable counter for the functional counter (to create a clk_en signal of period 1s)
+		oFC_q_old_sig         : out std_logic_vector(COUNTER_N-1 downto 0) := x"02"      -- Old Q address output from init counter (to detect changes)
+	);
+end project_1;
+
+architecture Structural of project_1 is
+
+	component reset_delay is
+	generic (
+		DELAY_LENGTH : unsigned(19 DOWNTO 0) := X"FFFFF"
+	);
+	port (
+		signal iCLK : IN std_logic;	
+		signal oRESET : OUT std_logic := '1'
+	);	
+	end component;
+	 
+	component keypad_controller IS
+	port (
+		reset : IN STD_LOGIC := '0';
+		clk : IN STD_LOGIC;
+		cols : in STD_LOGIC_VECTOR(3 DOWNTO 0); 
+		clk_en : out STD_LOGIC;
+		rows : out STD_LOGIC_VECTOR(4 downto 0);
+		kp_value : out STD_LOGIC_VECTOR(4 downto 0);
+		data_valid : out STD_LOGIC  
+	);
+
+	 end component;
+	 
+	component sram_controller is
+	port(
+		iClk		: in  std_logic;
+		iData    : in  std_logic_vector(15 downto 0);
+		iAddress : in  std_logic_vector(19 downto 0);
+		iRst     : in  std_logic;
+		iRW      : in  std_logic;
+		iTrigger : in  std_logic;
+		oReady   : out std_logic;
+		oData    : out std_logic_vector(15 downto 0);
+		oAddress : out std_logic_vector(19 downto 0);
+		oCE      : out std_logic;
+		oUB      : out std_logic;
+		oLB      : out std_logic;
+		oWE      : out std_logic;
+		oOE      : out std_logic;
+
+		oRW_state : out t_rw;
+		oFstate_write : out t_fstate_write;
+		oFstate_read : out t_fstate_read
+	);
+	
+	end component;
+	
+	component rom is
+	port(
+		address	: in STD_LOGIC_VECTOR (7 downto 0);
+		clock		: in STD_LOGIC  := '1';
+		q		   : out STD_LOGIC_VECTOR (15 downto 0)
+	);
+	
+	end component;
+	
+	component univ_bin_counter is
+	generic(N: integer := 8);
+	port(
+			clk, reset				: in std_logic;
+			syn_clr, load, en, up: in std_logic;
+			clk_en 					: in std_logic := '1';
+			d							: in std_logic_vector(N-1 downto 0);
+			max_tick, min_tick	: out std_logic;
+			q							: out std_logic_vector(N-1 downto 0)
+		);
+	end component;
+	
+	component seven_seg_controller is
+	port (
+		iClk  : in STD_LOGIC;
+		iData : in STD_LOGIC_VECTOR(3 downto 0);
+		oData : out STD_LOGIC_VECTOR(6 downto 0)
+	);
+	
+	end component;
+	
+	component btn_debounce_toggle is
+		generic(
+			CONSTANT CNTR_MAX : std_logic_vector(15 downto 0) := X"FFFF"
+		);
+		port(
+			BTN_I 	: in  STD_LOGIC;
+			CLK 		: in  STD_LOGIC;
+			BTN_O 	: out  STD_LOGIC;
+			TOGGLE_O : out  STD_LOGIC
+		);
+	
+	end component;
+	
+-- ----Signals---- --
+	signal reset_sig            : std_logic;
+	
+	-- Reset delay signals
+	signal RD_reset_sig         : std_logic;
+	
+	-- Debouncer signals
+	signal DB_reset_sig         : std_logic;
+	
+	-- Keypad signals
+	signal KP_value_sig         : std_logic_vector(4 downto 0);
+	signal KP_value_reg_sig     : std_logic_vector(4 downto 0);
+	signal KP_clk_en_sig        : std_logic;
+	signal KP_rows_sig          : std_logic_vector(4 downto 0);
+	signal KP_data_valid_sig    : std_logic;
+	
+	-- SRAM controller signals
+	signal SRAM_iData_sig        : std_logic_vector(15 downto 0);                      -- Data to SRAM controller
+	signal SRAM_iData_buffer_sig : std_logic_vector(15 downto 0);                      -- SRAM iData tristate buffer
+	signal SRAM_oData_sig       : std_logic_vector(15 downto 0);                       -- Data from SRAM controller
+	signal SRAM_address_sig     : std_logic_vector(19 downto 0);                       -- Address to SRAM controller
+	signal SRAM_rw_sig          : std_logic;                                           -- Read/Write signal for SRAM controller
+	signal SRAM_trigger_sig     : std_logic;                                           -- Trigger to SRAM controller
+	signal SRAM_ready_sig       : std_logic;                                           -- Ready signal from SRAM controller
+	
+	--ROM signals 
+	signal ROM_address_sig      : std_logic_vector(7 downto 0);                        -- Address selection input to ROM
+	signal ROM_q_sig            : std_logic_vector(15 downto 0);                       -- Data output from ROM
+	
+	-- Init counter signals
+	signal IC_clear_sig         : std_logic := '0';                                    -- Synchronous clear to init counter
+	signal IC_en_sig            : std_logic := '0';                                    -- Enable to init counter
+	signal IC_max_tick_sig      : std_logic;                                           -- Max tick from init counter
+	signal IC_q_sig             : std_logic_vector(COUNTER_N-1 downto 0);              -- Q address output from init counter
+	signal IC_clk_en_sig        : std_logic;                                           -- Clock enable signal to the init counter (period 100ns)
+	signal IC_clk_en_count_sig  : unsigned(2 downto 0) := b"000";                      -- Unsigned clock enable counter for the init counter (to create a clk_en signal of period 100ns)
+	signal IC_q_old_sig         : std_logic_vector(COUNTER_N-1 downto 0) := x"02";     -- Old Q address output from init counter (to detect changes) ("x02" is a dummy value - just can't be x"00")
+	
+	-- Functional counter signals
+	signal FC_clear_sig         : std_logic := '0';                                    -- Synchronous clear to functional counter
+	signal FC_en_sig            : std_logic := '1';                                    -- Enable to functional counter
+	signal FC_up_sig            : std_logic;
+	signal FC_max_tick_sig      : std_logic;                                           -- Max tick from functional counter
+	signal FC_q_sig             : std_logic_vector(COUNTER_N-1 downto 0);              -- Q address output from functional counter
+	signal FC_clk_en_sig        : std_logic;                                           -- Clock enable signal to the functional counter (period 1s)
+	signal FC_clk_en_count_sig  : unsigned(27 downto 0) := x"0000000";                 -- Unsigned clock enable counter for the functional counter (to create a clk_en signal of period 1s)
+	signal FC_q_old_sig         : std_logic_vector(COUNTER_N-1 downto 0) := x"02";     -- Old Q address output from init counter (to detect changes) ("x02" is a dummy value - just can't be x"00")
+	signal FC_en_sig_rst        : std_LOGIC;
+	signal FC_pause_sig : std_LOGIC;
+	
+	-- Seven segment signals
+	signal SS_hex0_sig          : std_logic_vector(3 downto 0);                         -- One-digit hex data into hex0
+	signal SS_hex1_sig          : std_logic_vector(3 downto 0);                         -- One-digit hex data into hex1
+	signal SS_hex2_sig          : std_logic_vector(3 downto 0);                         -- One-digit hex data into hex2
+	signal SS_hex3_sig          : std_logic_vector(3 downto 0);                         -- One-digit hex data into hex3
+	signal SS_hex4_sig          : std_logic_vector(3 downto 0);                         -- One-digit hex data into hex4
+	signal SS_hex5_sig          : std_logic_vector(3 downto 0);                         -- One-digit hex data into hex5
+	
+	-- User logic state machine signals
+	signal state_ul_sig                 : t_ul;
+	signal state_ul_program_sig         : t_ul_program;
+	signal state_ul_program_data_sig    : t_ul_program_data;
+	signal state_ul_program_address_sig : t_ul_program_address;
+	signal digit_count_sig              : unsigned(2 downto 0);                         -- Keeps track of how many digits have been entered in the programming mode
+	signal load_complete_sig            : std_logic := '0';                             -- Used to tell state_change process if a load has been completed
+	signal triggered_sig                : unsigned(1 downto 0) := "00";                 -- Used as a counter to time the SRAM triggering process
+	
+	-- Debouncer Signal for key 0
+	
+	signal key0_sig : std_logic;
+	
+	-- user input addr data signals 
+	signal user_input_addr_sig : STD_LOGIC_VECTOR(7 downto 0);
+	signal user_input_data_sig : STD_LOGIC_VECTOR(15 downto 0);
+	
+	begin
+	
+	-- connecting signal outputs for simulation
+--	oreset_sig                   <= reset_sig;
+--	oKP_value_sig                <= KP_value_sig;
+--	oRD_reset_sig                <= RD_reset_sig;
+--	oDB_reset_sig                <= DB_reset_sig;
+--	
+--	ostate_ul_sig                 <= state_ul_sig;
+--	ostate_ul_program_sig         <= state_ul_program_sig;
+--	ostate_ul_program_data_sig    <= state_ul_program_data_sig;
+--	ostate_ul_program_address_sig <= state_ul_program_address_sig;
+--	odigit_count_sig              <= digit_count_sig;
+--	oload_complete_sig            <= load_complete_sig;
+--	otriggered_sig                <= triggered_sig;
+--	
+--	oSRAM_iData_sig               <= SRAM_iData_sig;
+--	oSRAM_iData_buffer_sig        <= SRAM_iData_buffer_sig;
+--	oSRAM_oData_sig               <= SRAM_oData_sig;
+--	oSRAM_address_sig             <= SRAM_address_sig;
+--	oSRAM_rw_sig                  <= SRAM_rw_sig;
+--	oSRAM_trigger_sig             <= SRAM_trigger_sig; 
+--	oSRAM_ready_sig               <= SRAM_ready_sig;
+--	
+--	oROM_address_sig              <= ROM_address_sig;
+--	oROM_q_sig                    <= ROM_q_sig;
+--	 
+--	oIC_clear_sig                 <= IC_clear_sig;
+--	oIC_en_sig                    <= IC_en_sig;
+--	oIC_max_tick_sig              <= IC_max_tick_sig;
+--	oIC_q_sig                     <= IC_q_sig;
+--	oIC_clk_en_sig                <= IC_clk_en_sig;
+--	oIC_clk_en_count_sig          <= IC_clk_en_count_sig;
+--	oIC_q_old_sig                 <= IC_q_old_sig;
+--
+--	oFC_clear_sig                 <= FC_clear_sig;
+--	oFC_en_sig                    <= FC_en_sig;
+--	oFC_up_sig                    <= FC_up_sig;
+--	oFC_max_tick_sig              <= FC_max_tick_sig;
+--	oFC_q_sig                     <= FC_q_sig;
+--	oFC_clk_en_sig                <= FC_clk_en_sig;
+--	oFC_clk_en_count_sig          <= FC_clk_en_count_sig;
+--	oFC_q_old_sig                 <= FC_q_old_sig;
+	
+	-- Keypad mappings
+	ledr(7 downto 4) <= GPIO(9 downto 6);
+	ledr(3 downto 0) <= KP_value_reg_sig(3 downto 0);
+	ledr(12 dowNTO 8) <= KP_rows_sig;
+	
+	GPIO(9 downto 0) <= (others => 'Z');
+	GPIO(29 downto 26) <= KP_rows_sig(3 downto 0);
+	GPIO(25) <= KP_rows_sig(4);
+	
+	-- Static signal mappings
+	ROM_address_sig <= IC_q_sig;   -- Map the output of the init counter to the ROM's address input
+	key0_sig <= not KEY(1);
+	
+	-- This process solves the problem of multiple drivers on reset_sig by separating them into two cases:
+	-- one where the reset delay is active, and another where it isn't.
+	reset_switch : process(RD_reset_sig)
+	begin
+		if (RD_reset_sig = '1') then
+			reset_sig <= RD_reset_sig; -- RESET DELAY 
+		else
+			reset_sig <= DB_reset_sig; -- BUTTON DEBOUNCER
+		end if;
+	end process;
+	
+	
+--	KP_load : process(CLOCK_50, KP_data_valid_sig)
+--	begin
+--		if (rising_edge(CLOCK_50) and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then 
+--			KP_value_reg_sig <= KP_value_sig;
+--		end if;
+--	end process;
+--	
+--	init_clk_en : process(CLOCK_50, IC_en_sig)
+--	begin
+--		if (IC_en_sig = '1') then
+--			if (rising_edge(CLOCK_50) and CLOCK_50'EVENT) then
+--				if (IC_clk_en_count_sig = INIT_COUNTER_CLK_EN_MAX) then
+--					IC_clk_en_sig <= '1';
+--					IC_clk_en_count_sig <= b"000";
+--				else
+--					IC_clk_en_sig <= '0';
+--					IC_clk_en_count_sig <= IC_clk_en_count_sig + b"001";
+--				end if;
+--			end if;
+--		else
+--			IC_clk_en_sig <= '0';
+--			IC_clk_en_count_sig <= b"000";
+--		end if;
+--	end process;
+	
+	functional_clk_en : process(CLOCK_50, FC_en_sig) -- clk en for 1 second?
+	begin
+		if (FC_en_sig = '1') then
+			if (rising_edge(CLOCK_50) and CLOCK_50'EVENT) then
+				if (FC_clk_en_count_sig = FUNCTIONAL_COUNTER_CLK_EN_MAX) then
+					FC_clk_en_sig <= '1';
+					FC_clk_en_count_sig <= x"0000000";
+				else
+					FC_clk_en_sig <= '0';
+					FC_clk_en_count_sig <= FC_clk_en_count_sig + x"0000001";
+				end if;
+			end if;
+		else
+			FC_clk_en_sig <= '0';
+			FC_clk_en_count_sig <= x"0000000";
+		end if;
+	end process;
+	
+	init_counter_change : process(CLOCK_50) -- change direction?
+	begin
+		if(rising_edge(CLOCK_50) and CLOCK_50'EVENT) then
+		end if;
+	end process;
+	
+	-- BEGIN USER LOGIC --
+	-- Two separate processes for user logic
+	-- First, controls changing of states due to user's input
+	-- Second, controls the results of the changes in states
+	
+	state_change : process(CLOCK_50)
+	begin
+		if(rising_edge(CLOCK_50) and CLOCK_50'EVENT) then
+			if(reset_sig = '1') then
+				state_ul_sig <= RST;
+				state_ul_program_sig <= DATA;
+				state_ul_program_address_sig <= STANDBY;
+				state_ul_program_data_sig <= STANDBY;
+			else
+				if(state_ul_sig = OPERATION) then
+					FC_clear_sig <= '0';
+				else 
+				   FC_clear_sig <= '1';
+				end if;
+				if(reset_sig = '0' and state_ul_sig = RST) then
+					state_ul_sig <= LOAD;
+				end if;
+				
+				if(IC_max_tick_sig = '1' and state_ul_sig = LOAD) then
+					FC_clear_sig <= '0';
+					state_ul_sig <= OPERATION;
+				end if;
+				
+				--if(state_ul_sig = OPERATION and KP_value_reg_sig = b"10000") then -- b"10000" denotes SHIFT key
+				
+				if(state_ul_sig = OPERATION and KP_value_sig = b"10000" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then
+					state_ul_program_address_sig <= STANDBY;
+					state_ul_program_data_sig <= STANDBY;
+					state_ul_sig <= PROGRAMMING;	
+				end if;
+				
+				--if(state_ul_sig = PROGRAMMING and state_ul_program_address_sig <= STANDBY and state_ul_program_data_sig <= STANDBY and KP_value_reg_sig = b"10000") then -- b"10000" denotes SHIFT key
+				if(state_ul_sig = PROGRAMMING and state_ul_program_address_sig <= STANDBY and state_ul_program_data_sig <= STANDBY and KP_value_sig = b"10000" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then	
+					state_ul_sig <= OPERATION;
+				end if;
+				
+				--if(state_ul_sig = PROGRAMMING and state_ul_program_sig = DATA and KP_value_reg_sig = b"10001") then -- b"10001" denotes H key
+				if(state_ul_sig = PROGRAMMING and state_ul_program_sig = DATA and KP_value_sig = b"10001" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then -- b"10001" denotes H key
+					state_ul_program_sig <= ADDRESS;
+				end if;
+				
+				--if(state_ul_sig = PROGRAMMING and state_ul_program_sig = ADDRESS and KP_value_reg_sig = b"10001") then -- b"10001" denotes H key
+				if(state_ul_sig = PROGRAMMING and state_ul_program_sig = ADDRESS and KP_value_sig = b"10001" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then
+					state_ul_program_sig <= DATA;
+				end if;
+				
+				--if(state_ul_sig = PROGRAMMING and state_ul_program_sig = ADDRESS and state_ul_program_address_sig = STANDBY and KP_value_reg_sig = b"10010") then -- b"10010" denotes L key
+				if(state_ul_sig = PROGRAMMING and state_ul_program_sig = ADDRESS and state_ul_program_address_sig = STANDBY and KP_value_sig = b"10010" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then
+					state_ul_program_address_sig <= LOAD;
+				end if;
+				
+				--if(state_ul_sig = PROGRAMMING and state_ul_program_sig = DATA and state_ul_program_data_sig = STANDBY and KP_value_reg_sig = b"10010") then -- b"10010" denotes L key
+				if(state_ul_sig = PROGRAMMING and state_ul_program_sig = DATA and state_ul_program_data_sig = STANDBY and KP_value_sig = b"10010" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then
+					state_ul_program_data_sig <= LOAD;
+				end if;
+				
+				if(state_ul_sig = PROGRAMMING and state_ul_program_sig = ADDRESS and state_ul_program_address_sig = LOAD and load_complete_sig = '1') then -- if the loading process has been completed for an address
+					state_ul_program_address_sig <= STANDBY;
+				end if;
+				
+				if(state_ul_sig = PROGRAMMING and state_ul_program_sig = DATA and state_ul_program_data_sig = LOAD and load_complete_sig = '1') then -- if the loading process has been completed for an address
+					state_ul_program_data_sig <= STANDBY;
+				end if;
+ 			end if;
+		end if;
+	
+	end process;
+	
+	-- Tri-state buffer for SRAM_iData_sig
+--	SRAM_iData_sig <= SRAM_iData_buffer_sig when (state_ul_sig = OPERATION) else --????
+--							ROM_q_sig when (state_ul_sig = LOAD) -- Tie the ROM's data output to the SRAM controller's data input
+--							else (others => 'Z');
+
+   SRAM_iData_sig <= SRAM_DQ;
+	SRAM_DQ <= rom_q_sig when (state_ul_sig = LOAD) else 
+				 user_input_data_sig when state_ul_sig = Programming else --change later
+				  (others => 'Z');
+
+	state_actions : process(CLOCK_50)
+	begin
+		if(rising_edge(CLOCK_50) and CLOCK_50'EVENT) then
+			LEDG(0) <= '0';
+			FC_en_sig <= FC_pause_sig;
+			if(state_ul_sig = RST) then
+				IC_q_old_sig <= (others => '0');
+				triggered_sig <= "00";
+				FC_up_sig <= '1';
+				FC_pause_sig <= '1';
+		
+			elsif(state_ul_sig = LOAD) then 
+				--SRAM_DQ <= SRAM_oData_sig;                -- Tie the SRAM controller's data output to the SRAM (because writing)
+				SRAM_address_sig <= x"000" & IC_q_sig;    -- Tie the init counter's output (an address ranging from 0x00 to 0xFF) into the SRAM controller's address input
+				SRAM_rw_sig <= '0';                       -- Tie the SRAM's r/w input LOW to indicate writing
+				IC_en_sig <= '1';
+				
+				case triggered_sig is
+					when "00" => 
+						SRAM_trigger_sig <= '0';
+						IC_clk_en_sig <= '0';
+						if (SRAM_ready_sig = '1') then 
+							triggered_sig <= "01";
+							SRAM_trigger_sig <= '1';
+						end if;
+					when "01" =>
+						SRAM_trigger_sig <= '0';
+						IC_clk_en_sig <= '0';
+						triggered_sig <= "10";
+					when "10" =>
+						SRAM_trigger_sig <= '0';
+						IC_clk_en_sig <= '0';
+						if (SRAM_ready_sig = '1') then
+							triggered_sig <= "11";
+						end if;
+					when "11" =>
+						SRAM_trigger_sig <= '0';
+						IC_clk_en_sig <= '0';
+						if (IC_max_tick_sig /= '1') then
+							IC_clk_en_sig <= '1';
+							triggered_sig <= "00";
+						end if;
+				end case;
+
+			elsif(state_ul_sig = OPERATION) then          -- This state only reads from the SRAM
+				Triggered_sig <= "00";
+				SRAM_address_sig <= x"000" & FC_q_sig;     -- Tie the functional counter's output (an address ranging from 0x00 to 0xFF) into the SRAM controller's address input
+				SRAM_iData_buffer_sig <= SRAM_DQ;          -- Get data from SRAM's I/O SRAM_DQ and put it into the iData buffer            
+				SRAM_rw_sig <= '1';                        -- Tie r/w on the SRAM controller high to indicate reading
+				IC_en_sig <= '0';
+				
+				LEDG(0) <= '1';
+				
+				if(kp_value_sig = b"10010" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then 
+					FC_up_sig <= not FC_up_sig;
+				end if;
+				
+				if(kp_value_sig = b"10001" and KP_clk_en_sig = '1' and KP_data_valid_sig = '1') then 
+					FC_pause_sig <= not FC_pause_sig;
+				end if;
+				
+				SRAM_trigger_sig <= '1';
+				
+				-- Output data and address to seven segment displays
+				SS_hex0_sig <= SRAM_oData_sig(3 downto 0);
+				SS_hex1_sig <= SRAM_oData_sig(7 downto 4);
+				SS_hex2_sig <= SRAM_oData_sig(11 downto 8);
+				SS_hex3_sig <= SRAM_oData_sig(15 downto 12);
+				
+				SS_hex4_sig <= SRAM_address_sig(3 downto 0);
+				SS_hex5_sig <= SRAM_address_sig(7 downto 4);
+				
+			
+			elsif(state_ul_sig = PROGRAMMING) then
+			
+				SRAM_trigger_sig <= '0';
+				-- data, addr
+				SS_hex0_sig <= user_input_data_sig(3 downto 0);
+				SS_hex1_sig <= user_input_data_sig(7 downto 4);
+				SS_hex2_sig <= user_input_data_sig(11 downto 8);
+				SS_hex3_sig <= user_input_data_sig(15 downto 12);
+				
+				SS_hex4_sig <= user_input_addr_sig(3 downto 0);
+				SS_hex5_sig <= user_input_addr_sig(7 downto 4);
+
+					if(state_ul_program_data_sig = LOAD or state_ul_program_address_sig = LOAD) then
+						SRAM_address_sig <= x"000" & user_input_addr_sig ;    -- Tie the init counter's output (an address ranging from 0x00 to 0xFF) into the SRAM controller's address input
+						SRAM_rw_sig <= '0';                       -- Tie the SRAM's r/w input LOW to indicate writing
+						
+					case triggered_sig is
+						when "00" => 
+							SRAM_trigger_sig <= '0';
+						if (SRAM_ready_sig = '1') then 
+							triggered_sig <= "01";
+							SRAM_trigger_sig <= '1';
+						end if;
+						when "01" =>
+							SRAM_trigger_sig <= '0';
+							triggered_sig <= "10";
+						when "10" =>
+						SRAM_trigger_sig <= '0';
+							if (SRAM_ready_sig = '1') then
+								triggered_sig <= "11";
+							end if;
+						when "11" =>
+							SRAM_trigger_sig <= '0';
+							load_complete_sig <= '1';
+				end case;
+	
+					else
+						triggered_sig <= "00";
+						if(state_ul_program_sig = DATA) then 
+							-- HEX3 downto HEX0
+							if (KP_clk_en_sig = '1' and KP_data_valid_sig = '1' and kp_value_sig(4) = '0') then
+								user_input_data_sig <= user_input_data_sig(11 downto 0) & kp_value_sig(3 downto 0);
+							end if;
+	
+						elsif (state_ul_program_sig = ADDRESS) then
+							--HEX5 downto HEX4
+							if (KP_clk_en_sig = '1' and KP_data_valid_sig = '1' and kp_value_sig(4) = '0') then
+								user_input_addr_sig <= user_input_addr_sig(3 downto 0) & kp_value_sig(3 downto 0);
+							end if;
+						end if;
+					end if;	
+			end if;
+		end if;
+	end process;
+	
+	inst_reset_delay : reset_delay
+	generic map(
+		DELAY_LENGTH => RESET_DELAY_DELAY -- Real hardware value: X"FFFFF". Simulation value: X"00004".
+	)
+	port map(
+		iCLK          => CLOCK_50,
+		oRESET        => RD_reset_sig
+	
+	);
+	
+	inst_keypad_controller : keypad_controller
+	port map(
+		reset      => reset_sig,
+		clk        => CLOCK_50,
+		cols       => GPIO(9 downto 6),
+		clk_en     => KP_clk_en_sig,
+		rows       => KP_rows_sig,
+		kp_value   => KP_value_sig,
+		data_valid => KP_data_valid_sig
+			
+	);
+	
+	inst_sram_controller : sram_controller
+	port map(
+		iClk	     => CLOCK_50,
+		iData      => SRAM_iData_sig,
+		iAddress   => SRAM_address_sig,
+		iRst       => reset_sig,      
+		iRW        => SRAM_rw_sig,
+		iTrigger   => SRAM_trigger_sig,
+		oReady     => SRAM_ready_sig,
+		oData      => SRAM_oData_sig,
+		oAddress   => SRAM_ADDR,
+		oCE        => SRAM_CE_N,
+		oUB        => SRAM_UB_N,
+		oLB        => SRAM_LB_N,
+		oWE        => SRAM_WE_N,
+		oOE        => SRAM_OE_N
+	);
+		
+	inst_rom : rom
+	port map(
+		address    => ROM_address_sig,
+		clock      => CLOCK_50,
+		q		     => ROM_q_sig
+	);
+	
+	init_univ_bin_counter : univ_bin_counter
+	generic map(
+		N => COUNTER_N
+	)
+	port map(
+		clk        => CLOCK_50,
+		reset      => reset_sig,
+		syn_clr    => IC_clear_sig,
+		load       => '0',
+		en         => IC_en_sig,
+		up         => '1',
+		clk_en 	  => IC_clk_en_sig,
+		d          => x"00",
+		max_tick   => IC_max_tick_sig,
+		q		     => IC_q_sig
+);
+	
+	functional_univ_bin_counter : univ_bin_counter
+	generic map(
+		N => COUNTER_N
+	)
+	port map(
+		clk        => CLOCK_50,
+		reset      => reset_sig,
+		syn_clr    => FC_clear_sig,
+		load       => '0',
+		en         => FC_en_sig,
+		up         => FC_up_sig,
+		clk_en 	  => FC_clk_en_sig,
+		d          => x"00",
+		max_tick   => FC_max_tick_sig,
+		q		     => FC_q_sig
+	);
+		
+	inst_btn_debounce_toggle : btn_debounce_toggle
+	port map(
+		BTN_I 	  => key0_sig,--KEY(1), -- not this 
+		CLK        => CLOCK_50,		
+		BTN_O 	  => DB_reset_sig
+	);
+		
+	hex0_seven_seg_controller : seven_seg_controller
+	port map(
+		iClk       => CLOCK_50,
+		iData      => SS_hex0_sig,
+		oData      => HEX0
+	);
+		
+	hex1_seven_seg_controller : seven_seg_controller
+	port map(
+		iClk       => CLOCK_50,
+		iData      => SS_hex1_sig,
+		oData      => HEX1
+	);
+		
+	hex2_seven_seg_controller : seven_seg_controller
+	port map(
+		iClk       => CLOCK_50,
+		iData      => SS_hex2_sig,
+		oData      => HEX2
+	);
+		
+	hex3_seven_seg_controller : seven_seg_controller
+	port map(
+		iClk       => CLOCK_50,
+		iData      => SS_hex3_sig,
+		oData      => HEX3
+	);
+	
+	hex4_seven_seg_controller : seven_seg_controller
+	port map(
+		iClk       => CLOCK_50,
+		iData      => SS_hex4_sig,
+		oData      => HEX4
+	);
+		
+	hex5_seven_seg_controller : seven_seg_controller
+	port map(
+		iClk       => CLOCK_50,
+		iData      => SS_hex5_sig,
+		oData      => HEX5
+	);
+end Structural;
