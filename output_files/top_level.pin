@@ -69,30 +69,30 @@ CHIP  "top_level"  ASSIGNED TO AN: EP4CE115F29C7
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
 VCCIO8                       : A2        : power  :                   : 2.5V    : 8         :                
-oSRAM_iData_sig[3]           : A3        : output : 2.5 V             :         : 8         : N              
-oFC_q_sig[1]                 : A4        : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[5]             : A3        : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : A4        :        :                   :         : 8         :                
 VCCIO8                       : A5        : power  :                   : 2.5V    : 8         :                
-oFC_up_sig                   : A6        : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_sig[9]           : A7        : output : 2.5 V             :         : 8         : N              
-oIC_q_sig[1]                 : A8        : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[1]           : A6        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[2]           : A7        : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : A8        :        :                   :         : 8         :                
 VCCIO8                       : A9        : power  :                   : 2.5V    : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : A10       :        :                   :         : 8         :                
+oFC_q_old_sig[1]             : A10       : output : 2.5 V             :         : 8         : N              
 oFC_q_sig[4]                 : A11       : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_buffer_sig[7]    : A12       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_buffer_sig[2]    : A12       : output : 2.5 V             :         : 8         : N              
 VCCIO8                       : A13       : power  :                   : 2.5V    : 8         :                
 GND+                         : A14       :        :                   :         : 8         :                
 GND+                         : A15       :        :                   :         : 7         :                
 VCCIO7                       : A16       : power  :                   : 2.5V    : 7         :                
-ostate_ul_sig.PWM_GENERATION : A17       : output : 2.5 V             :         : 7         : N              
-oFC_clk_en_count_sig[2]      : A18       : output : 2.5 V             :         : 7         : N              
-oSRAM_address_sig[0]         : A19       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_buffer_sig[8]    : A17       : output : 2.5 V             :         : 7         : N              
+oFC_q_old_sig[7]             : A18       : output : 2.5 V             :         : 7         : N              
+oreset_sig                   : A19       : output : 2.5 V             :         : 7         : N              
 VCCIO7                       : A20       : power  :                   : 2.5V    : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A21       :        :                   :         : 7         :                
-oKP_value_sig[0]             : A22       : output : 2.5 V             :         : 7         : N              
-oSRAM_oData_sig[7]           : A23       : output : 2.5 V             :         : 7         : N              
+oSRAM_ready_sig              : A22       : output : 2.5 V             :         : 7         : N              
+oFC_q_sig[6]                 : A23       : output : 2.5 V             :         : 7         : N              
 VCCIO7                       : A24       : power  :                   : 2.5V    : 7         :                
-oROM_address_sig[2]          : A25       : output : 2.5 V             :         : 7         : N              
-oIC_q_old_sig[6]             : A26       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_sig[15]          : A25       : output : 2.5 V             :         : 7         : N              
+oFC_q_sig[0]                 : A26       : output : 2.5 V             :         : 7         : N              
 VCCIO7                       : A27       : power  :                   : 2.5V    : 7         :                
 VCCIO2                       : AA1       : power  :                   : 3.3V    : 2         :                
 GND                          : AA2       : gnd    :                   :         :           :                
@@ -116,10 +116,10 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AA19      :        :                   :      
 GNDA4                        : AA20      : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA21      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA22      :        :                   :         : 5         :                
-oSRAM_iData_buffer_sig[5]    : AA23      : output : 2.5 V             :         : 5         : N              
-otriggered_sig[0]            : AA24      : output : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : AA25      :        :                   :         : 5         :                
-oFC_clk_en_count_sig[21]     : AA26      : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA23      :        :                   :         : 5         :                
+oKP_value_sig[2]             : AA24      : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_sig[12]          : AA25      : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[20]     : AA26      : output : 2.5 V             :         : 5         : N              
 GND                          : AA27      : gnd    :                   :         :           :                
 VCCIO5                       : AA28      : power  :                   : 2.5V    : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB1       :        :                   :         : 2         :                
@@ -144,11 +144,11 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AB19      :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB20      :        :                   :         : 4         :                
 GPIO[2]                      : AB21      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 GPIO[0]                      : AB22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
-oFC_clk_en_count_sig[4]      : AB23      : output : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : AB24      :        :                   :         : 5         :                
-oFC_clk_en_count_sig[18]     : AB25      : output : 2.5 V             :         : 5         : N              
-oSRAM_oData_sig[0]           : AB26      : output : 2.5 V             :         : 5         : N              
-oFC_q_sig[5]                 : AB27      : output : 2.5 V             :         : 5         : N              
+oFC_q_old_sig[3]             : AB23      : output : 2.5 V             :         : 5         : N              
+oSRAM_address_sig[1]         : AB24      : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB25      :        :                   :         : 5         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB26      :        :                   :         : 5         :                
+oFC_clk_en_count_sig[8]      : AB27      : output : 2.5 V             :         : 5         : N              
 SW[0]                        : AB28      : input  : 2.5 V             :         : 5         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AC1       :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AC2       :        :                   :         : 2         :                
@@ -173,10 +173,10 @@ GND                          : AC20      : gnd    :                   :         
 GPIO[4]                      : AC21      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 GPIO[17]                     : AC22      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 GND                          : AC23      : gnd    :                   :         :           :                
-oSRAM_address_sig[11]        : AC24      : output : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : AC25      :        :                   :         : 5         :                
-oSRAM_oData_sig[13]          : AC26      : output : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : AC27      :        :                   :         : 5         :                
+ostate_ul_sig.INITIALIZATION : AC24      : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_buffer_sig[4]    : AC25      : output : 2.5 V             :         : 5         : N              
+oKP_value_sig[4]             : AC26      : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[27]     : AC27      : output : 2.5 V             :         : 5         : N              
 SW[1]                        : AC28      : input  : 2.5 V             :         : 5         : Y              
 SRAM_DQ[8]                   : AD1       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
 SRAM_DQ[9]                   : AD2       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
@@ -203,9 +203,9 @@ GPIO[21]                     : AD22      : bidir  : 3.3-V LVTTL       :         
 VCCIO4                       : AD23      : power  :                   : 3.3V    : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD24      :        :                   :         : 4         :                
 GPIO[23]                     : AD25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
-oFC_clk_en_count_sig[1]      : AD26      : output : 2.5 V             :         : 5         : N              
-oFC_clk_en_count_sig[6]      : AD27      : output : 2.5 V             :         : 5         : N              
-oFC_q_old_sig[1]             : AD28      : output : 2.5 V             :         : 5         : N              
+oROM_q_sig[12]               : AD26      : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD27      :        :                   :         : 5         :                
+oROM_q_sig[9]                : AD28      : output : 2.5 V             :         : 5         : N              
 SRAM_DQ[11]                  : AE1       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
 SRAM_DQ[10]                  : AE2       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
 SRAM_DQ[12]                  : AE3       : bidir  : 3.3-V LVTTL       :         : 2         : Y              
@@ -232,8 +232,8 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AE23      :        :                   :      
 GPIO[27]                     : AE24      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 GPIO[25]                     : AE25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE26      :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : AE27      :        :                   :         : 5         :                
-oIC_clk_en_count_sig[0]      : AE28      : output : 2.5 V             :         : 5         : N              
+oSRAM_address_sig[8]         : AE27      : output : 2.5 V             :         : 5         : N              
+odigit_count_sig[2]          : AE28      : output : 2.5 V             :         : 5         : N              
 GND                          : AF1       : gnd    :                   :         :           :                
 SRAM_ADDR[10]                : AF2       : output : 3.3-V LVTTL       :         : 2         : Y              
 SRAM_DQ[14]                  : AF3       : bidir  : 3.3-V LVTTL       :         : 3         : Y              
@@ -260,7 +260,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AF23      :        :                   :      
 GPIO[14]                     : AF24      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 GPIO[16]                     : AF25      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 GPIO[29]                     : AF26      : bidir  : 3.3-V LVTTL       :         : 4         : Y              
-oROM_q_sig[1]                : AF27      : output : 2.5 V             :         : 5         : N              
+oFC_q_old_sig[4]             : AF27      : output : 2.5 V             :         : 5         : N              
 GND                          : AF28      : gnd    :                   :         :           :                
 VCCIO2                       : AG1       : power  :                   : 3.3V    : 2         :                
 GND                          : AG2       : gnd    :                   :         :           :                
@@ -318,172 +318,172 @@ GPIO[33]                     : AH26      : bidir  : 3.3-V LVTTL       :         
 VCCIO4                       : AH27      : power  :                   : 3.3V    : 4         :                
 VCCIO1                       : B1        : power  :                   : 3.3V    : 1         :                
 GND                          : B2        : gnd    :                   :         :           :                
-oSRAM_iData_sig[13]          : B3        : output : 2.5 V             :         : 8         : N              
-oFC_q_old_sig[3]             : B4        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[1]                : B3        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[3]           : B4        : output : 2.5 V             :         : 8         : N              
 GND                          : B5        : gnd    :                   :         :           :                
-oSRAM_address_sig[16]        : B6        : output : 2.5 V             :         : 8         : N              
-oSRAM_address_sig[9]         : B7        : output : 2.5 V             :         : 8         : N              
-oIC_q_old_sig[1]             : B8        : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[14]     : B6        : output : 2.5 V             :         : 8         : N              
+oIC_q_sig[6]                 : B7        : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[0]             : B8        : output : 2.5 V             :         : 8         : N              
 GND                          : B9        : gnd    :                   :         :           :                
-ostate_ul_program_sig.ONE000 : B10       : output : 2.5 V             :         : 8         : N              
-oROM_q_sig[5]                : B11       : output : 2.5 V             :         : 8         : N              
+oROM_address_sig[1]          : B10       : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[2]           : B11       : output : 2.5 V             :         : 8         : N              
 GND                          : B12       : gnd    :                   :         :           :                
 GND                          : B13       : gnd    :                   :         :           :                
 GND+                         : B14       :        :                   :         : 8         :                
 GND+                         : B15       :        :                   :         : 7         :                
 GND                          : B16       : gnd    :                   :         :           :                
-oIC_q_old_sig[5]             : B17       : output : 2.5 V             :         : 7         : N              
-oSRAM_iData_sig[14]          : B18       : output : 2.5 V             :         : 7         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : B19       :        :                   :         : 7         :                
+oROM_address_sig[2]          : B17       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[16]        : B18       : output : 2.5 V             :         : 7         : N              
+oSRAM_oData_sig[0]           : B19       : output : 2.5 V             :         : 7         : N              
 GND                          : B20       : gnd    :                   :         :           :                
-oFC_q_sig[2]                 : B21       : output : 2.5 V             :         : 7         : N              
-otriggered_sig[1]            : B22       : output : 2.5 V             :         : 7         : N              
-oFC_clk_en_count_sig[3]      : B23       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_buffer_sig[11]   : B21       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : B22       :        :                   :         : 7         :                
+oIC_clk_en_sig               : B23       : output : 2.5 V             :         : 7         : N              
 GND                          : B24       : gnd    :                   :         :           :                
-oIC_q_sig[6]                 : B25       : output : 2.5 V             :         : 7         : N              
-oSRAM_address_sig[8]         : B26       : output : 2.5 V             :         : 7         : N              
+oSRAM_oData_sig[9]           : B25       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_buffer_sig[13]   : B26       : output : 2.5 V             :         : 7         : N              
 GND                          : B27       : gnd    :                   :         :           :                
 VCCIO6                       : B28       : power  :                   : 2.5V    : 6         :                
 GND                          : C1        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C2        :        :                   :         : 1         :                
-oKP_value_sig[1]             : C3        : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_sig[0]           : C4        : output : 2.5 V             :         : 8         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : C5        :        :                   :         : 8         :                
-oSRAM_iData_sig[6]           : C6        : output : 2.5 V             :         : 8         : N              
-oSRAM_address_sig[3]         : C7        : output : 2.5 V             :         : 8         : N              
-oROM_address_sig[3]          : C8        : output : 2.5 V             :         : 8         : N              
-oROM_q_sig[7]                : C9        : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_buffer_sig[14]   : C10       : output : 2.5 V             :         : 8         : N              
-oFC_q_old_sig[7]             : C11       : output : 2.5 V             :         : 8         : N              
-oKP_value_sig[2]             : C12       : output : 2.5 V             :         : 8         : N              
-oSRAM_address_sig[15]        : C13       : output : 2.5 V             :         : 8         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : C14       :        :                   :         : 8         :                
-oSRAM_iData_buffer_sig[0]    : C15       : output : 2.5 V             :         : 7         : N              
-oFC_clk_en_count_sig[20]     : C16       : output : 2.5 V             :         : 7         : N              
-oFC_clk_en_count_sig[11]     : C17       : output : 2.5 V             :         : 7         : N              
-oSRAM_rw_sig                 : C18       : output : 2.5 V             :         : 7         : N              
-oSRAM_trigger_sig            : C19       : output : 2.5 V             :         : 7         : N              
-oreset_sig                   : C20       : output : 2.5 V             :         : 7         : N              
-oSRAM_iData_buffer_sig[9]    : C21       : output : 2.5 V             :         : 7         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : C22       :        :                   :         : 7         :                
-oFC_clk_en_sig               : C23       : output : 2.5 V             :         : 7         : N              
-oSRAM_oData_sig[10]          : C24       : output : 2.5 V             :         : 7         : N              
-oFC_q_old_sig[5]             : C25       : output : 2.5 V             :         : 7         : N              
-oROM_q_sig[3]                : C26       : output : 2.5 V             :         : 7         : N              
-oSRAM_iData_sig[11]          : C27       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_count_sig[19]     : C3        : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[3]             : C4        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[11]               : C5        : output : 2.5 V             :         : 8         : N              
+ostate_ul_sig.RST            : C6        : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[1]             : C7        : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[11]        : C8        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[0]           : C9        : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C10       :        :                   :         : 8         :                
+oFC_en_sig                   : C11       : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[19]        : C12       : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[3]           : C13       : output : 2.5 V             :         : 8         : N              
+oFC_up_sig                   : C14       : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[2]      : C15       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[18]     : C16       : output : 2.5 V             :         : 7         : N              
+oSRAM_iData_buffer_sig[12]   : C17       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[0]      : C18       : output : 2.5 V             :         : 7         : N              
+oROM_address_sig[5]          : C19       : output : 2.5 V             :         : 7         : N              
+oIC_clk_en_count_sig[1]      : C20       : output : 2.5 V             :         : 7         : N              
+ostate_ul_program_sig.SIXTY  : C21       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[15]        : C22       : output : 2.5 V             :         : 7         : N              
+oRD_reset_sig                : C23       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C24       :        :                   :         : 7         :                
+oDB_reset_sig                : C25       : output : 2.5 V             :         : 7         : N              
+otriggered_sig[0]            : C26       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[9]      : C27       : output : 2.5 V             :         : 6         : N              
 GND                          : C28       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D1        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D2        :        :                   :         : 1         :                
 GND                          : D3        : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : D4        :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : D5        :        :                   :         : 8         :                
-oSRAM_iData_buffer_sig[3]    : D6        : output : 2.5 V             :         : 8         : N              
-oROM_q_sig[2]                : D7        : output : 2.5 V             :         : 8         : N              
-oSRAM_address_sig[18]        : D8        : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_buffer_sig[13]   : D9        : output : 2.5 V             :         : 8         : N              
-oROM_q_sig[10]               : D10       : output : 2.5 V             :         : 8         : N              
-oROM_address_sig[5]          : D11       : output : 2.5 V             :         : 8         : N              
-oFC_clk_en_count_sig[13]     : D12       : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_buffer_sig[6]    : D13       : output : 2.5 V             :         : 8         : N              
-odigit_count_sig[0]          : D14       : output : 2.5 V             :         : 8         : N              
-oFC_clk_en_count_sig[0]      : D15       : output : 2.5 V             :         : 7         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : D16       :        :                   :         : 7         :                
-oFC_q_old_sig[0]             : D17       : output : 2.5 V             :         : 7         : N              
-oROM_address_sig[7]          : D18       : output : 2.5 V             :         : 7         : N              
-oSRAM_oData_sig[1]           : D19       : output : 2.5 V             :         : 7         : N              
-ostate_ul_sig.INITIALIZATION : D20       : output : 2.5 V             :         : 7         : N              
-oSRAM_iData_buffer_sig[8]    : D21       : output : 2.5 V             :         : 7         : N              
-oRD_reset_sig                : D22       : output : 2.5 V             :         : 7         : N              
-oFC_clk_en_count_sig[8]      : D23       : output : 2.5 V             :         : 7         : N              
-oFC_q_old_sig[4]             : D24       : output : 2.5 V             :         : 7         : N              
-oFC_clk_en_count_sig[7]      : D25       : output : 2.5 V             :         : 7         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : D26       :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : D27       :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : D28       :        :                   :         : 6         :                
+otriggered_sig[1]            : D4        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_buffer_sig[14]   : D5        : output : 2.5 V             :         : 8         : N              
+odigit_count_sig[0]          : D6        : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[13]          : D7        : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[10]          : D8        : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : D9        :        :                   :         : 8         :                
+oFC_clk_en_count_sig[15]     : D10       : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[8]           : D11       : output : 2.5 V             :         : 8         : N              
+oROM_address_sig[3]          : D12       : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[6]           : D13       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[10]          : D14       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[6]           : D15       : output : 2.5 V             :         : 7         : N              
+oROM_address_sig[6]          : D16       : output : 2.5 V             :         : 7         : N              
+ostate_ul_program_sig.ONE20  : D17       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[22]     : D18       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[18]        : D19       : output : 2.5 V             :         : 7         : N              
+oSRAM_oData_sig[14]          : D20       : output : 2.5 V             :         : 7         : N              
+oROM_address_sig[7]          : D21       : output : 2.5 V             :         : 7         : N              
+oIC_q_sig[1]                 : D22       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[25]     : D23       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : D24       :        :                   :         : 7         :                
+oSRAM_address_sig[3]         : D25       : output : 2.5 V             :         : 7         : N              
+oIC_q_sig[5]                 : D26       : output : 2.5 V             :         : 6         : N              
+oKP_value_sig[1]             : D27       : output : 2.5 V             :         : 6         : N              
+oIC_max_tick_sig             : D28       : output : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : E1        :        :                   :         : 1         :                
 ~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : E2        : input  : 3.3-V LVTTL       :         : 1         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : E3        :        :                   :         : 1         :                
-oIC_q_sig[5]                 : E4        : output : 2.5 V             :         : 8         : N              
-oROM_q_sig[9]                : E5        : output : 2.5 V             :         : 8         : N              
+oIC_q_sig[3]                 : E4        : output : 2.5 V             :         : 8         : N              
+ostate_ul_sig.TEST_MODE      : E5        : output : 2.5 V             :         : 8         : N              
 VCCIO8                       : E6        : power  :                   : 2.5V    : 8         :                
-oFC_clk_en_count_sig[17]     : E7        : output : 2.5 V             :         : 8         : N              
-oFC_clk_en_count_sig[15]     : E8        : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[1]      : E7        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[8]                : E8        : output : 2.5 V             :         : 8         : N              
 VCCIO8                       : E9        : power  :                   : 2.5V    : 8         :                
-oSRAM_oData_sig[4]           : E10       : output : 2.5 V             :         : 8         : N              
-oFC_clk_en_count_sig[23]     : E11       : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_sig[1]           : E12       : output : 2.5 V             :         : 8         : N              
+oIC_q_sig[4]                 : E10       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[4]           : E11       : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E12       :        :                   :         : 8         :                
 VCCIO8                       : E13       : power  :                   : 2.5V    : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : E14       :        :                   :         : 8         :                
-oROM_q_sig[14]               : E15       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[12]        : E14       : output : 2.5 V             :         : 8         : N              
+oSRAM_oData_sig[7]           : E15       : output : 2.5 V             :         : 7         : N              
 VCCIO7                       : E16       : power  :                   : 2.5V    : 7         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : E17       :        :                   :         : 7         :                
+oFC_clk_en_count_sig[26]     : E17       : output : 2.5 V             :         : 7         : N              
 LEDR[5]                      : E18       : output : 2.5 V             :         : 7         : Y              
 LEDR[2]                      : E19       : output : 2.5 V             :         : 7         : Y              
 VCCIO7                       : E20       : power  :                   : 2.5V    : 7         :                
 LEDG[0]                      : E21       : output : 2.5 V             :         : 7         : Y              
 LEDG[1]                      : E22       : output : 2.5 V             :         : 7         : Y              
 VCCIO7                       : E23       : power  :                   : 2.5V    : 7         :                
-oIC_q_sig[7]                 : E24       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E24       :        :                   :         : 7         :                
 LEDG[2]                      : E25       : output : 2.5 V             :         : 7         : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : E26       :        :                   :         : 6         :                
-oFC_clk_en_count_sig[16]     : E27       : output : 2.5 V             :         : 6         : N              
-oSRAM_address_sig[10]        : E28       : output : 2.5 V             :         : 6         : N              
+oROM_q_sig[10]               : E26       : output : 2.5 V             :         : 6         : N              
+oFC_q_old_sig[0]             : E27       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[0]         : E28       : output : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : F1        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F2        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F3        :        :                   :         : 1         :                
 ~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP : F4        : input  : 3.3-V LVTTL       :         : 1         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : F5        :        :                   :         : 1         :                
 GND                          : F6        : gnd    :                   :         :           :                
-oSRAM_iData_sig[7]           : F7        : output : 2.5 V             :         : 8         : N              
-oIC_q_old_sig[3]             : F8        : output : 2.5 V             :         : 8         : N              
+oIC_q_old_sig[4]             : F7        : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[6]                : F8        : output : 2.5 V             :         : 8         : N              
 GND                          : F9        : gnd    :                   :         :           :                
-oFC_clk_en_count_sig[27]     : F10       : output : 2.5 V             :         : 8         : N              
-oSRAM_address_sig[19]        : F11       : output : 2.5 V             :         : 8         : N              
-oIC_q_old_sig[0]             : F12       : output : 2.5 V             :         : 8         : N              
+oSRAM_address_sig[13]        : F10       : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[13]     : F11       : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[3]                : F12       : output : 2.5 V             :         : 8         : N              
 GND                          : F13       : gnd    :                   :         :           :                
-oFC_clk_en_count_sig[26]     : F14       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[5]           : F14       : output : 2.5 V             :         : 8         : N              
 LEDR[14]                     : F15       : output : 2.5 V             :         : 7         : Y              
 GND                          : F16       : gnd    :                   :         :           :                
-oFC_clk_en_count_sig[19]     : F17       : output : 2.5 V             :         : 7         : N              
+oFC_clk_en_count_sig[12]     : F17       : output : 2.5 V             :         : 7         : N              
 LEDR[4]                      : F18       : output : 2.5 V             :         : 7         : Y              
 LEDR[1]                      : F19       : output : 2.5 V             :         : 7         : Y              
 GND                          : F20       : gnd    :                   :         :           :                
 LEDR[3]                      : F21       : output : 2.5 V             :         : 7         : Y              
-oIC_clk_en_sig               : F22       : output : 2.5 V             :         : 7         : N              
+oKP_value_sig[3]             : F22       : output : 2.5 V             :         : 7         : N              
 GND                          : F23       : gnd    :                   :         :           :                
-oROM_address_sig[6]          : F24       : output : 2.5 V             :         : 6         : N              
-oSRAM_iData_sig[8]           : F25       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : F24       :        :                   :         : 6         :                
+ostate_ul_program_sig.ONE000 : F25       : output : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : F26       :        :                   :         : 6         :                
-oSRAM_iData_sig[4]           : F27       : output : 2.5 V             :         : 6         : N              
-oIC_q_sig[0]                 : F28       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_sig               : F27       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_count_sig[7]      : F28       : output : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G1        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G2        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G3        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G4        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G5        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G6        :        :                   :         : 1         :                
-oROM_q_sig[0]                : G7        : output : 2.5 V             :         : 8         : N              
-oROM_q_sig[13]               : G8        : output : 2.5 V             :         : 8         : N              
-oSRAM_address_sig[1]         : G9        : output : 2.5 V             :         : 8         : N              
-oFC_max_tick_sig             : G10       : output : 2.5 V             :         : 8         : N              
-oSRAM_oData_sig[11]          : G11       : output : 2.5 V             :         : 8         : N              
-oSRAM_ready_sig              : G12       : output : 2.5 V             :         : 8         : N              
-oIC_clear_sig                : G13       : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_sig[5]           : G14       : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[16]     : G7        : output : 2.5 V             :         : 8         : N              
+oIC_q_sig[2]                 : G8        : output : 2.5 V             :         : 8         : N              
+oFC_q_sig[1]                 : G9        : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[10]     : G10       : output : 2.5 V             :         : 8         : N              
+oFC_clear_sig                : G11       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[8]           : G12       : output : 2.5 V             :         : 8         : N              
+oROM_q_sig[13]               : G13       : output : 2.5 V             :         : 8         : N              
+oIC_q_sig[7]                 : G14       : output : 2.5 V             :         : 8         : N              
 LEDR[15]                     : G15       : output : 2.5 V             :         : 7         : Y              
-oSRAM_address_sig[4]         : G16       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : G16       :        :                   :         : 7         :                
 LEDR[9]                      : G17       : output : 2.5 V             :         : 7         : Y              
-oFC_clk_en_count_sig[10]     : G18       : output : 2.5 V             :         : 7         : N              
+oROM_q_sig[7]                : G18       : output : 2.5 V             :         : 7         : N              
 LEDR[0]                      : G19       : output : 2.5 V             :         : 7         : Y              
-oSRAM_oData_sig[15]          : G20       : output : 2.5 V             :         : 7         : N              
-oFC_q_old_sig[2]             : G21       : output : 2.5 V             :         : 7         : N              
-oSRAM_oData_sig[12]          : G22       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[10]        : G20       : output : 2.5 V             :         : 7         : N              
+oSRAM_address_sig[2]         : G21       : output : 2.5 V             :         : 7         : N              
+oFC_q_sig[3]                 : G22       : output : 2.5 V             :         : 7         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G23       :        :                   :         : 6         :                
-oSRAM_iData_sig[12]          : G24       : output : 2.5 V             :         : 6         : N              
-ostate_ul_sig.TEST_MODE      : G25       : output : 2.5 V             :         : 6         : N              
-oFC_clk_en_count_sig[25]     : G26       : output : 2.5 V             :         : 6         : N              
-oKP_value_sig[4]             : G27       : output : 2.5 V             :         : 6         : N              
-oKP_value_sig[3]             : G28       : output : 2.5 V             :         : 6         : N              
+ostate_ul_sig.PWM_GENERATION : G24       : output : 2.5 V             :         : 6         : N              
+oROM_q_sig[5]                : G25       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[14]        : G26       : output : 2.5 V             :         : 6         : N              
+oSRAM_iData_buffer_sig[3]    : G27       : output : 2.5 V             :         : 6         : N              
+oSRAM_iData_sig[7]           : G28       : output : 2.5 V             :         : 6         : N              
 VCCIO1                       : H1        : power  :                   : 3.3V    : 1         :                
 GND                          : H2        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H3        :        :                   :         : 1         :                
@@ -491,25 +491,25 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : H4        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : H5        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H6        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H7        :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : H8        :        :                   :         : 8         :                
+oFC_clk_en_count_sig[5]      : H8        : output : 2.5 V             :         : 8         : N              
 GNDA3                        : H9        : gnd    :                   :         :           :                
-oROM_address_sig[1]          : H10       : output : 2.5 V             :         : 8         : N              
+oSRAM_trigger_sig            : H10       : output : 2.5 V             :         : 8         : N              
 VCCIO8                       : H11       : power  :                   : 2.5V    : 8         :                
-oROM_address_sig[4]          : H12       : output : 2.5 V             :         : 8         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : H13       :        :                   :         : 8         :                
-oSRAM_oData_sig[2]           : H14       : output : 2.5 V             :         : 8         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : H15       :        :                   :         : 7         :                
+oSRAM_iData_buffer_sig[9]    : H12       : output : 2.5 V             :         : 8         : N              
+oIC_en_sig                   : H13       : output : 2.5 V             :         : 8         : N              
+oROM_address_sig[4]          : H14       : output : 2.5 V             :         : 8         : N              
+oSRAM_iData_sig[11]          : H15       : output : 2.5 V             :         : 7         : N              
 LEDR[11]                     : H16       : output : 2.5 V             :         : 7         : Y              
 LEDR[13]                     : H17       : output : 2.5 V             :         : 7         : Y              
 VCCIO7                       : H18       : power  :                   : 2.5V    : 7         :                
 LEDR[7]                      : H19       : output : 2.5 V             :         : 7         : Y              
 GNDA2                        : H20       : gnd    :                   :         :           :                
-oSRAM_iData_buffer_sig[2]    : H21       : output : 2.5 V             :         : 7         : N              
-oIC_q_sig[3]                 : H22       : output : 2.5 V             :         : 6         : N              
-oSRAM_iData_buffer_sig[10]   : H23       : output : 2.5 V             :         : 6         : N              
-oFC_q_sig[7]                 : H24       : output : 2.5 V             :         : 6         : N              
-ostate_ul_program_sig.SIXTY  : H25       : output : 2.5 V             :         : 6         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : H26       :        :                   :         : 6         :                
+oFC_max_tick_sig             : H21       : output : 2.5 V             :         : 7         : N              
+oROM_q_sig[15]               : H22       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H23       :        :                   :         : 6         :                
+oSRAM_address_sig[5]         : H24       : output : 2.5 V             :         : 6         : N              
+odigit_count_sig[1]          : H25       : output : 2.5 V             :         : 6         : N              
+oSRAM_oData_sig[4]           : H26       : output : 2.5 V             :         : 6         : N              
 GND                          : H27       : gnd    :                   :         :           :                
 VCCIO6                       : H28       : power  :                   : 2.5V    : 6         :                
 GND+                         : J1        :        :                   :         : 1         :                
@@ -521,11 +521,11 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : J6        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : J7        :        :                   :         : 1         :                
 VCCA3                        : J8        : power  :                   : 2.5V    :           :                
 VCCD_PLL3                    : J9        : power  :                   : 1.2V    :           :                
-oIC_en_sig                   : J10       : output : 2.5 V             :         : 8         : N              
+oFC_clk_en_count_sig[6]      : J10       : output : 2.5 V             :         : 8         : N              
 GND                          : J11       : gnd    :                   :         :           :                
-oSRAM_address_sig[14]        : J12       : output : 2.5 V             :         : 8         : N              
-oSRAM_iData_buffer_sig[1]    : J13       : output : 2.5 V             :         : 8         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : J14       :        :                   :         : 8         :                
+oSRAM_address_sig[17]        : J12       : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J13       :        :                   :         : 8         :                
+oIC_clk_en_count_sig[0]      : J14       : output : 2.5 V             :         : 8         : N              
 LEDR[10]                     : J15       : output : 2.5 V             :         : 7         : Y              
 LEDR[12]                     : J16       : output : 2.5 V             :         : 7         : Y              
 LEDR[8]                      : J17       : output : 2.5 V             :         : 7         : Y              
@@ -533,10 +533,10 @@ GND                          : J18       : gnd    :                   :         
 LEDR[6]                      : J19       : output : 2.5 V             :         : 7         : Y              
 VCCD_PLL2                    : J20       : power  :                   : 1.2V    :           :                
 VCCA2                        : J21       : power  :                   : 2.5V    :           :                
-oIC_q_sig[4]                 : J22       : output : 2.5 V             :         : 6         : N              
-oSRAM_address_sig[17]        : J23       : output : 2.5 V             :         : 6         : N              
-ostate_ul_program_sig.ONE20  : J24       : output : 2.5 V             :         : 6         : N              
-oIC_clk_en_count_sig[2]      : J25       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[9]         : J22       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J23       :        :                   :         : 6         :                
+oSRAM_iData_buffer_sig[10]   : J24       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J25       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J26       :        :                   :         : 6         :                
 GND+                         : J27       :        :                   :         : 6         :                
 GND+                         : J28       :        :                   :         : 6         :                
@@ -560,14 +560,14 @@ VCCINT                       : K17       : power  :                   : 1.2V    
 GND                          : K18       : gnd    :                   :         :           :                
 VCCINT                       : K19       : power  :                   : 1.2V    :           :                
 GND                          : K20       : gnd    :                   :         :           :                
-oFC_q_sig[0]                 : K21       : output : 2.5 V             :         : 6         : N              
-oSRAM_oData_sig[14]          : K22       : output : 2.5 V             :         : 6         : N              
+oSRAM_oData_sig[15]          : K21       : output : 2.5 V             :         : 6         : N              
+oFC_q_sig[5]                 : K22       : output : 2.5 V             :         : 6         : N              
 GND                          : K23       : gnd    :                   :         :           :                
 VCCIO6                       : K24       : power  :                   : 2.5V    : 6         :                
-oFC_en_sig                   : K25       : output : 2.5 V             :         : 6         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : K26       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K25       :        :                   :         : 6         :                
+oSRAM_iData_buffer_sig[7]    : K26       : output : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : K27       :        :                   :         : 6         :                
-oSRAM_oData_sig[3]           : K28       : output : 2.5 V             :         : 6         : N              
+oSRAM_oData_sig[13]          : K28       : output : 2.5 V             :         : 6         : N              
 LCD_DATA[1]                  : L1        : output : 3.3-V LVTTL       :         : 1         : Y              
 LCD_DATA[2]                  : L2        : output : 3.3-V LVTTL       :         : 1         : Y              
 LCD_DATA[0]                  : L3        : output : 3.3-V LVTTL       :         : 1         : Y              
@@ -588,14 +588,14 @@ GND                          : L17       : gnd    :                   :         
 VCCINT                       : L18       : power  :                   : 1.2V    :           :                
 GND                          : L19       : gnd    :                   :         :           :                
 VCCINT                       : L20       : power  :                   : 1.2V    :           :                
-oSRAM_iData_sig[15]          : L21       : output : 2.5 V             :         : 6         : N              
-oSRAM_iData_sig[2]           : L22       : output : 2.5 V             :         : 6         : N              
-oFC_clk_en_count_sig[14]     : L23       : output : 2.5 V             :         : 6         : N              
-oROM_q_sig[11]               : L24       : output : 2.5 V             :         : 6         : N              
+oROM_q_sig[4]                : L21       : output : 2.5 V             :         : 6         : N              
+oFC_q_sig[2]                 : L22       : output : 2.5 V             :         : 6         : N              
+oload_complete_sig           : L23       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : L24       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : L25       :        :                   :         : 6         :                
-oFC_clk_en_count_sig[22]     : L26       : output : 2.5 V             :         : 6         : N              
-oFC_clk_en_count_sig[5]      : L27       : output : 2.5 V             :         : 6         : N              
-oIC_q_sig[2]                 : L28       : output : 2.5 V             :         : 6         : N              
+oIC_clk_en_count_sig[2]      : L26       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[4]         : L27       : output : 2.5 V             :         : 6         : N              
+oIC_q_old_sig[2]             : L28       : output : 2.5 V             :         : 6         : N              
 LCD_RW                       : M1        : output : 3.3-V LVTTL       :         : 1         : Y              
 LCD_RS                       : M2        : output : 3.3-V LVTTL       :         : 1         : Y              
 LCD_DATA[6]                  : M3        : output : 3.3-V LVTTL       :         : 1         : Y              
@@ -619,11 +619,11 @@ GND                          : M20       : gnd    :                   :         
 KEY[1]                       : M21       : input  : 2.5 V             :         : 6         : Y              
 MSEL2                        : M22       :        :                   :         : 6         :                
 KEY[0]                       : M23       : input  : 2.5 V             :         : 6         : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : M24       :        :                   :         : 6         :                
-oSRAM_address_sig[13]        : M25       : output : 2.5 V             :         : 6         : N              
-oSRAM_iData_buffer_sig[12]   : M26       : output : 2.5 V             :         : 6         : N              
-oSRAM_oData_sig[6]           : M27       : output : 2.5 V             :         : 6         : N              
-oROM_q_sig[8]                : M28       : output : 2.5 V             :         : 6         : N              
+oSRAM_address_sig[6]         : M24       : output : 2.5 V             :         : 6         : N              
+oIC_q_old_sig[7]             : M25       : output : 2.5 V             :         : 6         : N              
+oROM_q_sig[14]               : M26       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_count_sig[4]      : M27       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : M28       :        :                   :         : 6         :                
 VCCIO1                       : N1        : power  :                   : 3.3V    : 1         :                
 GND                          : N2        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N3        :        :                   :         : 1         :                
@@ -648,8 +648,8 @@ KEY[2]                       : N21       : input  : 2.5 V             :         
 MSEL0                        : N22       :        :                   :         : 6         :                
 GND                          : N23       : gnd    :                   :         :           :                
 VCCIO6                       : N24       : power  :                   : 2.5V    : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : N25       :        :                   :         : 6         :                
-oIC_max_tick_sig             : N26       : output : 2.5 V             :         : 6         : N              
+oIC_q_old_sig[6]             : N25       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : N26       :        :                   :         : 6         :                
 GND                          : N27       : gnd    :                   :         :           :                
 VCCIO6                       : N28       : power  :                   : 2.5V    : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P1        :        :                   :         : 1         :                
@@ -672,13 +672,13 @@ VCCINT                       : P17       : power  :                   : 1.2V    
 GND                          : P18       : gnd    :                   :         :           :                
 VCCINT                       : P19       : power  :                   : 1.2V    :           :                
 GND                          : P20       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : P21       :        :                   :         : 5         :                
+oFC_q_old_sig[6]             : P21       : output : 2.5 V             :         : 5         : N              
 MSEL3                        : P22       :        :                   :         : 6         :                
 MSEL1                        : P23       :        :                   :         : 6         :                
 CONF_DONE                    : P24       :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : P25       :        :                   :         : 6         :                
-odigit_count_sig[1]          : P26       : output : 2.5 V             :         : 6         : N              
-oSRAM_address_sig[6]         : P27       : output : 2.5 V             :         : 6         : N              
+oKP_value_sig[0]             : P25       : output : 2.5 V             :         : 6         : N              
+oFC_clk_en_count_sig[23]     : P26       : output : 2.5 V             :         : 6         : N              
+oROM_q_sig[2]                : P27       : output : 2.5 V             :         : 6         : N              
 ~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN : P28       : output : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : R1        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : R2        :        :                   :         : 2         :                
@@ -700,14 +700,14 @@ GND                          : R17       : gnd    :                   :         
 VCCINT                       : R18       : power  :                   : 1.2V    :           :                
 GND                          : R19       : gnd    :                   :         :           :                
 VCCINT                       : R20       : power  :                   : 1.2V    :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : R21       :        :                   :         : 5         :                
-oIC_clk_en_count_sig[1]      : R22       : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[3]      : R21       : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_buffer_sig[1]    : R22       : output : 2.5 V             :         : 5         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : R23       :        :                   :         : 5         :                
 KEY[3]                       : R24       : input  : 2.5 V             :         : 5         : Y              
-oFC_clk_en_count_sig[9]      : R25       : output : 2.5 V             :         : 5         : N              
-odigit_count_sig[2]          : R26       : output : 2.5 V             :         : 5         : N              
-oSRAM_iData_buffer_sig[11]   : R27       : output : 2.5 V             :         : 5         : N              
-oSRAM_address_sig[5]         : R28       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : R25       :        :                   :         : 5         :                
+oSRAM_iData_buffer_sig[6]    : R26       : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_buffer_sig[15]   : R27       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : R28       :        :                   :         : 5         :                
 VCCIO2                       : T1        : power  :                   : 3.3V    : 2         :                
 GND                          : T2        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T3        :        :                   :         : 2         :                
@@ -728,12 +728,12 @@ VCCINT                       : T17       : power  :                   : 1.2V    
 GND                          : T18       : gnd    :                   :         :           :                
 VCCINT                       : T19       : power  :                   : 1.2V    :           :                
 GND                          : T20       : gnd    :                   :         :           :                
-ostate_ul_program_address_sig : T21       : output : 2.5 V             :         : 5         : N              
-oSRAM_address_sig[7]         : T22       : output : 2.5 V             :         : 5         : N              
+oSRAM_oData_sig[5]           : T21       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : T22       :        :                   :         : 5         :                
 GND                          : T23       : gnd    :                   :         :           :                
 VCCIO5                       : T24       : power  :                   : 2.5V    : 5         :                
-oSRAM_iData_buffer_sig[15]   : T25       : output : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : T26       :        :                   :         : 5         :                
+oSRAM_iData_sig[1]           : T25       : output : 2.5 V             :         : 5         : N              
+oIC_q_sig[0]                 : T26       : output : 2.5 V             :         : 5         : N              
 GND                          : T27       : gnd    :                   :         :           :                
 VCCIO5                       : T28       : power  :                   : 2.5V    : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : U1        :        :                   :         : 2         :                
@@ -756,13 +756,13 @@ GND                          : U17       : gnd    :                   :         
 VCCINT                       : U18       : power  :                   : 1.2V    :           :                
 GND                          : U19       : gnd    :                   :         :           :                
 VCCINT                       : U20       : power  :                   : 1.2V    :           :                
-ostate_ul_sig.RST            : U21       : output : 2.5 V             :         : 5         : N              
-oIC_q_old_sig[7]             : U22       : output : 2.5 V             :         : 5         : N              
-oIC_q_old_sig[2]             : U23       : output : 2.5 V             :         : 5         : N              
-oIC_q_old_sig[4]             : U24       : output : 2.5 V             :         : 5         : N              
-oload_complete_sig           : U25       : output : 2.5 V             :         : 5         : N              
-oSRAM_iData_sig[10]          : U26       : output : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : U27       :        :                   :         : 5         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U21       :        :                   :         : 5         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : U22       :        :                   :         : 5         :                
+oSRAM_iData_buffer_sig[0]    : U23       : output : 2.5 V             :         : 5         : N              
+oSRAM_rw_sig                 : U24       : output : 2.5 V             :         : 5         : N              
+oROM_address_sig[0]          : U25       : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[21]     : U26       : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_sig[9]           : U27       : output : 2.5 V             :         : 5         : N              
 oFC_clk_en_count_sig[24]     : U28       : output : 2.5 V             :         : 5         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : V1        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V2        :        :                   :         : 2         :                
@@ -784,14 +784,14 @@ VCCINT                       : V17       : power  :                   : 1.2V    
 GND                          : V18       : gnd    :                   :         :           :                
 VCCINT                       : V19       : power  :                   : 1.2V    :           :                
 GND                          : V20       : gnd    :                   :         :           :                
-oFC_q_sig[3]                 : V21       : output : 2.5 V             :         : 5         : N              
-oFC_clk_en_count_sig[12]     : V22       : output : 2.5 V             :         : 5         : N              
-oFC_clear_sig                : V23       : output : 2.5 V             :         : 5         : N              
-oFC_q_old_sig[6]             : V24       : output : 2.5 V             :         : 5         : N              
-oSRAM_oData_sig[8]           : V25       : output : 2.5 V             :         : 5         : N              
-oROM_q_sig[4]                : V26       : output : 2.5 V             :         : 5         : N              
-oSRAM_address_sig[2]         : V27       : output : 2.5 V             :         : 5         : N              
-oSRAM_address_sig[12]        : V28       : output : 2.5 V             :         : 5         : N              
+ostate_ul_program_data_sig   : V21       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : V22       :        :                   :         : 5         :                
+oROM_q_sig[0]                : V23       : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[11]     : V24       : output : 2.5 V             :         : 5         : N              
+oSRAM_oData_sig[12]          : V25       : output : 2.5 V             :         : 5         : N              
+oSRAM_oData_sig[11]          : V26       : output : 2.5 V             :         : 5         : N              
+oSRAM_iData_sig[14]          : V27       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : V28       :        :                   :         : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W1        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W2        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W3        :        :                   :         : 2         :                
@@ -812,14 +812,14 @@ GND                          : W17       : gnd    :                   :         
 VCCINT                       : W18       : power  :                   : 1.2V    :           :                
 GND                          : W19       : gnd    :                   :         :           :                
 VCCINT                       : W20       : power  :                   : 1.2V    :           :                
-oROM_q_sig[15]               : W21       : output : 2.5 V             :         : 5         : N              
-oROM_address_sig[0]          : W22       : output : 2.5 V             :         : 5         : N              
+oFC_q_old_sig[5]             : W21       : output : 2.5 V             :         : 5         : N              
+oSRAM_address_sig[7]         : W22       : output : 2.5 V             :         : 5         : N              
 GND                          : W23       : gnd    :                   :         :           :                
 VCCIO5                       : W24       : power  :                   : 2.5V    : 5         :                
-oSRAM_oData_sig[5]           : W25       : output : 2.5 V             :         : 5         : N              
-oSRAM_oData_sig[9]           : W26       : output : 2.5 V             :         : 5         : N              
-oSRAM_iData_buffer_sig[4]    : W27       : output : 2.5 V             :         : 5         : N              
-oROM_q_sig[6]                : W28       : output : 2.5 V             :         : 5         : N              
+oFC_q_sig[7]                 : W25       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : W26       :        :                   :         : 5         :                
+ostate_ul_program_address_sig : W27       : output : 2.5 V             :         : 5         : N              
+oFC_clk_en_count_sig[17]     : W28       : output : 2.5 V             :         : 5         : N              
 GND+                         : Y1        :        :                   :         : 2         :                
 CLOCK_50                     : Y2        : input  : 3.3-V LVTTL       :         : 2         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y3        :        :                   :         : 2         :                
@@ -841,10 +841,10 @@ GND                          : Y18       : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y19       :        :                   :         : 4         :                
 VCCD_PLL4                    : Y20       : power  :                   : 1.2V    :           :                
 VCCA4                        : Y21       : power  :                   : 2.5V    :           :                
-ostate_ul_program_data_sig   : Y22       : output : 2.5 V             :         : 5         : N              
-oDB_reset_sig                : Y23       : output : 2.5 V             :         : 5         : N              
-oFC_q_sig[6]                 : Y24       : output : 2.5 V             :         : 5         : N              
-oROM_q_sig[12]               : Y25       : output : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : Y26       :        :                   :         : 5         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y22       :        :                   :         : 5         :                
+oFC_q_old_sig[2]             : Y23       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y24       :        :                   :         : 5         :                
+oSRAM_iData_buffer_sig[5]    : Y25       : output : 2.5 V             :         : 5         : N              
+oIC_clear_sig                : Y26       : output : 2.5 V             :         : 5         : N              
 GND+                         : Y27       :        :                   :         : 5         :                
 GND+                         : Y28       :        :                   :         : 5         :                

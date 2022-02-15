@@ -1,5 +1,5 @@
 Assembler report for top_level
-Sun Feb 13 20:12:07 2022
+Tue Feb 15 13:43:28 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Feb 13 20:12:07 2022 ;
+; Assembler Status      ; Successful - Tue Feb 15 13:43:28 2022 ;
 ; Revision Name         ; top_level                             ;
 ; Top-level Entity Name ; project_1                             ;
 ; Family                ; Cyclone IV E                          ;
@@ -103,8 +103,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                                   ;
 +----------------+---------------------------------------------------------------------------+
 ; Device         ; EP4CE115F29C7                                                             ;
-; JTAG usercode  ; 0x006FB5A3                                                                ;
-; Checksum       ; 0x006FB5A3                                                                ;
+; JTAG usercode  ; 0x006A4E5B                                                                ;
+; Checksum       ; 0x006A4E5B                                                                ;
 +----------------+---------------------------------------------------------------------------+
 
 
@@ -114,14 +114,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-    Info: Processing started: Sun Feb 13 20:11:54 2022
+    Info: Processing started: Tue Feb 15 13:43:16 2022
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off top_level -c top_level
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4577 megabytes
-    Info: Processing ended: Sun Feb 13 20:12:07 2022
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 4567 megabytes
+    Info: Processing ended: Tue Feb 15 13:43:28 2022
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:04
 
 

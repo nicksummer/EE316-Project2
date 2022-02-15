@@ -12,7 +12,7 @@ use ieee.numeric_std.all;
 end PWM_Generator;
 
 architecture struct of PWM_Generator is 
-signal counter : std_logic_vector(15 downto 0);
+signal counter : std_logic_vector(7 downto 0);
 signal duty_reg : std_logic_vector(15 downto 0);
 
 begin 
@@ -23,7 +23,7 @@ begin
 		if (reset_n = '0') then 
 			counter <= (others => '0');
 		else
-			counter <= std_LOGIC_VECTOR(to_unsigned(to_integer(unsigned( counter )) + 1, 16));
+			counter <= std_LOGIC_VECTOR(to_unsigned(to_integer(unsigned( counter )) + 1, 8));
 		end if;
 	end if;
 end process;

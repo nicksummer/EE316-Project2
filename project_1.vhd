@@ -306,6 +306,7 @@ architecture Structural of project_1 is
 	constant testmode_const       : row := (x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"65", x"64", x"6f", x"6d", x"20", x"74", x"73", x"65", x"74");
 	constant hexdigit			      : row := (x"66", x"65", x"64", x"63", x"62", x"61", x"39", x"38", x"37", x"36", x"35", x"34", x"33", x"32", x"31", x"30");
 	constant pwm_mode_const       : row := (x"20", x"20", x"20", x"6e", x"6f", x"74", x"61", x"72", x"65", x"6e", x"65", x"67", x"20", x"6d", x"77", x"70");
+	constant pausemode_const      : row := (x"20", x"20", x"20", x"20", x"20", x"20", x"65", x"64", x"6f", x"4d", x"20", x"65", x"73", x"75", x"61", x"50");
 	begin
 	
 	-- connecting signal outputs for simulation
@@ -358,6 +359,7 @@ architecture Structural of project_1 is
 	key1_sig <= key(1);
 	key2_sig <= key(2);
 	key3_sig <= key(3);
+	
 	
 	LCD_DATA <= LCD_oDATA_sig;
 	--LCD_idata_sig <= initialization_const(to_integer(unsigned(LCD_oCol_sig)));
@@ -429,6 +431,8 @@ architecture Structural of project_1 is
 					when others => LCD_idata_sig <= x"20";
 				end case;
 			end if;
+		elsif(state_ul_sig = TEST_MODE and FC_clear_sig = '1') then 
+			LCD_idata_sig <= pausemode_const(to_integer(unsigned(LCD_oCol_sig)));
 		elsif(state_ul_sig = PWM_GENERATION) then
 			if(LCD_oRow_sig = '0') then 
 				LCD_idata_sig <= pwm_mode_const(to_integer(unsigned(LCD_oCol_sig)));
@@ -646,9 +650,9 @@ architecture Structural of project_1 is
 				
 				
 				--The LCD should display PWM mode and should also display which frequency the sine wave should be generated at
+				GPIO(16) <= PWM_out_sig;
 				
-				
-				LEDG(0) <= PWM_out_sig;
+				--LEDG(0) <= PWM_out_sig;
 				
 				SRAM_trigger_sig <= '1';
 				
